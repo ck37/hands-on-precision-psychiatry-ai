@@ -1,0 +1,169 @@
+---
+title: "Clean dataset"
+author: "Chris Kennedy"
+date: "2025-08-28"
+output:
+  html_document:
+    toc: yes
+    toc_depth: 3
+    toc_float: yes
+---
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+
+library(rio)
+
+(dir_data = here::here("data/"))
+```
+
+## Import dataset
+
+Source: https://www.kaggle.com/datasets/adilshamim8/student-depression-dataset/data
+
+```{r import_dataset}
+df = rio::import(here::here("data-raw/student_depression_dataset.csv"))
+str(df)
+```
+
+## Clean up
+
+```{r clean_up}
+# Clean up variable names using the janitor package
+df = janitor::clean_names(df)
+
+# Much better
+str(df)
+
+# Convert string variables in the dataframe to factors
+df = df |> dplyr::mutate(across(where(is.character), as.factor))
+
+# Better, but looks like some strings should be numerics.
+str(df)
+
+df$suicidal_thoughts_ever = as.integer(df$have_you_ever_had_suicidal_thoughts == "Yes")
+table("new" = df$suicidal_thoughts_ever,
+      "old" = df$have_you_ever_had_suicidal_thoughts, useNA = "ifany")
+
+# Remove old version.
+df$have_you_ever_had_suicidal_thoughts = NULL
+
+# Examine the numeric variables esp.
+summary(df)
+
+df$fam_hx_mental_illness = as.integer(df$family_history_of_mental_illness == "Yes")
+table("new" = df$fam_hx_mental_illness,
+      "old" = df$family_history_of_mental_illness, useNA = "ifany")
+
+# Remove old version.
+df$family_history_of_mental_illness = NULL
+
+str(df)
+
+df$is_student = as.integer(df$profession == "Student")
+table("new" = df$is_student, "old" = df$profession, useNA = "ifany")
+
+# Transpose table so it's easier to read:
+t(table("new" = df$is_student, "old" = df$profession, useNA = "ifany"))
+
+# Remove old version
+df$profession = NULL
+
+summary(df)
+class(df$financial_stress)
+df$financial_stress[df$financial_stress == "?"] = NA
+
+table("codes" = as.integer(df$financial_stress),
+      "labels" = df$financial_stress, useNA = "ifany")
+
+# Convert factor to the label values, which are integers.
+df$stress_financial = as.integer(as.character(df$financial_stress))
+
+table(df$stress_financial,
+      df$financial_stress, useNA = "ifany")
+
+# Remove old version
+df$financial_stress = NULL
+
+df$sleep_duration[df$sleep_duration == "Others"] = NA
+table(df$sleep_duration, useNA = "ifany")
+
+df$dietary_habits[df$dietary_habits == "Others"] = NA
+
+df$degree[df$degree == "Others"] = NA
+
+str(df)
+```
+
+## Check for missing data
+
+```{r missing_data}
+# sleep duration and financial stress.
+colSums(is.na(df))
+
+colMeans(is.na(df))
+```
+
+We could potentially impute missing values (e.g. `missRanger`) and add missingness indicators, but let's avoid that for now.
+
+## Define predictors and outcome
+
+
+```{r define_predictors}
+# Identifier for each participant - important to not be included as a predictor.
+id = "id"
+outcome = "depression"
+
+# Everything else is a predictor.
+(predictors = setdiff(names(df), c(id, outcome)))
+```
+
+## Collapse rare factors
+
+Mainly needed due to the subsetting that is about to happen.
+
+```{r collapse_rare}
+table(df$city)
+df$city = forcats::fct_lump_min(df$city, 1000)
+table(df$city, useNA = "ifany")
+```
+
+## Subset df
+
+This is just to speed up the tutorial - comment out if preferred.
+
+```{r subset_df}
+set.seed(1)
+
+# Save a backup of the full dataframe.
+full_df = df
+
+# Select 200 obs at random.
+train_rows = sample(nrow(df), 200)
+df = df[train_rows, ]
+nrow(df)
+
+df_test = full_df[-train_rows, ]
+
+# Not too shabby.
+nrow(df_test)
+```
+
+## Remove empty factor levels
+
+```{r remove_empty_factor_levels}
+# Remove empty factor levels in the dataframe.
+# This is due to the subsetting above, otherwise it wouldn't be an issue.
+df = droplevels(df)
+```
+
+## Save dataset
+
+```{r save_datset}
+dim(df)
+names(df)
+save(df, id, predictors, outcome, df_test,
+     file = paste0(dir_data, "clean-dataset.RData"))
+```
+
