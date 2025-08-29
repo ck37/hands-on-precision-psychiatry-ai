@@ -26,3 +26,9 @@ renv::restore()
 ```
 
 This will install the necessary R packages.
+
+### GitHub codespaces
+
+To run on codespaces, click the green "Code" button -> then "Codespaces" tab ->
+create "codespace on main". Once that starts up, click to the ports tab and
+click the globe.
