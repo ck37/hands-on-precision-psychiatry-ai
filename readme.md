@@ -32,3 +32,9 @@ This will install the necessary R packages.
 To run on codespaces, click the green "Code" button -> then "Codespaces" tab ->
 create "codespace on main". Once that starts up, click to the ports tab and
 click the globe.
+
+Once logged in to Rstudio (username: rstudio, password: rstudio), click to the
+Terminal tab, cd to your home directory, and create a symlink to the working data
+
+`ln -s /workspaces/hands-on-ai-in-psychiatry .`
+
