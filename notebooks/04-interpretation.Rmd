@@ -1,0 +1,106 @@
+---
+title: "Interpretation"
+author: "Chris Kennedy"
+date: "2025-08-28"
+output:
+  html_document:
+    toc: yes
+    toc_depth: 3
+    toc_float: yes
+---
+
+```{r libs}
+library(fastshap)
+library(treeshap)
+library(iml)
+```
+
+## Load dataset
+
+```{r load_data}
+# Created in clean-dataset.Rmd
+load(here::here("data/clean-dataset.RData"))
+
+# Created in random-forests.Rmd
+load(here::here("data/random-forest.RData"))
+```
+
+## SHAP for interpretation
+
+(Thx to Pratik for the code!)
+
+### First, local
+
+Because it's more fun.
+
+```{r}
+library(fastshap)
+library(shapviz)
+  
+# prediction wrapper for fastshap
+ranger_predict =
+  function(object, newdata) {
+  # Extract the risk predictions.
+  unname(predict(object, data = newdata)$predictions[, 2])
+}
+
+set.seed(2)
+df_test_bg = df_test[sample(nrow(df_test), 500), ]
+nrow(df_test_bg)
+
+
+df_test_new = df_test[sample(nrow(df_test), 2000), ]
+  
+set.seed(3)
+
+system.time({
+  shap_exp =
+    fastshap::explain(rf1,
+                      # Background dataset
+                      X = df_test_bg, 
+                      nsim = 2L,
+                      pred_wrapper = ranger_predict,
+                      newdata = df_test_new,
+                      # Improve accuracy of local explanations.
+                      adjust = TRUE,
+                      shap_only = FALSE)
+})
+
+# What is the baseline risk?    
+#(baseline = attr(shap_exp, "baseline"))
+(baseline = mean(df_test$depression))
+    
+shap_viz =
+  shapviz(shap_exp,
+          # X here needs to be the same df as newdata above.
+          X = df_test_new,
+          baseline = baseline)
+    
+sv_waterfall(shap_viz,
+             # Select the row to explain
+             row_id = 2L,
+             # Number of predictors to display.
+             max_display = 5)
+```
+
+## Global importance
+
+```{r global_importance}
+
+# Mean-absolute SHAP plot 
+sv_importance(shap_viz, max_display = Inf) + theme_minimal()
+
+# We use beeswarm when we want to confuse the hell out of our audience.    
+sv_importance(shap_viz, kind = "beeswarm", max_display = Inf)  + theme_minimal()
+```
+
+## Challenges
+
+1. Try selecting some other rows for the waterfall plots. Anything surprising?
+
+2. Try changing the SHAP computations: increase the number of simulations and change the dataset sizes.
+
+
+## Further reading
+
+

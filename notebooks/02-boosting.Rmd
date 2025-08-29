@@ -75,13 +75,13 @@ modelLookup("xgbTree")
   # Depth of the decision tree (how many levels of splits).
 	max_depth = c(1, 3), 
   # Learning rate: lower means the ensemble will adapt more slowly.
-	eta = c(0.01, 0.2),
+	eta = c(0.1, 0.2),
   # Make this larger and xgboost will tend to make smaller trees
   gamma = 0,
   colsample_bytree = 1.0,
   subsample = 1.0,
   # Stop splitting a tree if we only have this many obs in a tree node.
-	min_child_weight = 10L))
+	min_child_weight = 4L))
 
 # Other hyperparameters: gamma, column sampling, row sampling
 
@@ -91,20 +91,14 @@ nrow(xgb_grid)
 
 ## Fit model
 
-Note that we will now use *A*rea *U*nder the ROC *C*urve (called "AUC") as our performance metric, which relates the number of true positives (sensitivity) to the number of true negatives (specificity).
+Note that we will now use *A*rea *U*nder the ROC *C*urve (called "AUC") as our performance metric, which relates the number of true positives (sensitivity) to the number of true negatives (specificity). More in the next lesson.
 
-```{r xgb_fit, cache = TRUE}
+```{r xgb_fit}
 set.seed(1)
 
-str(df)
-
-# cbind: caret expects the Y response and X predictors to be part of the same dataframe
-#xgb_train_y_class ~ ., data = cbind(xgb_train_y_class, train_x_class), 
-class(df[, predictors])
 df2 = na.omit(df)
 df2$depression = factor(df2[[outcome]], labels = c("no", "yes"))
-df2 = df
-df2$depression = factor(df2[[outcome]], labels = c("no", "yes"))
+#df2 = df
 
 model =
   caret::train(
@@ -161,31 +155,12 @@ table(df_test2$depression, predicted_labels)
 # Generate predicted probabilities - better.
 pred_probs = predict(model, df_test2, type = "prob")
 
-# Some dichotomized performance statistics.
+# Some dichotomized performance statistics - more to come in the next section.
 (cm = confusionMatrix(predicted_labels, factor(df_test2$depression, labels = c("no", "yes"))))
 
-# Define ROC characteristics
-(rocCurve = pROC::roc(response = df_test2$depression,
-                      predictor = pred_probs[, "yes"],
-                      levels = c(0, 1),
-                      direction = "<",
-                      # Looks nicer but much slower to run, and can hide complexity (e.g. ties).
-                      # smooth = TRUE,
-                      auc = TRUE, ci = TRUE))
-
-(thresholds = seq(0.1, 0.9, length.out = 5))
-
-# Plot ROC curve
-plot(rocCurve, 
-     print.thres.cex = 2,
-     #print.thres = "best", 
-     print.auc = TRUE, # Nice to include the 95% CI as well.
-     print.thres = thresholds,
-     main = "XGBoost on test set", col = "blue", las = 1) 
-
-# Get specificity and sensitivity at particular threshold
-pROC::coords(rocCurve, 0.3, transpose = FALSE)
 ```
+
+[Wikipedia has some helpful tables](https://en.wikipedia.org/wiki/Confusion_matrix#Table_of_confusion) to remind you of various dichotomized metrics.
 
 ## Save results
 

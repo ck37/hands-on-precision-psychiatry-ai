@@ -1,0 +1,266 @@
+---
+title: "Performance evaluation"
+author: "Chris Kennedy"
+date: "2025-08-28"
+output:
+  html_document:
+    toc: yes
+    toc_depth: 3
+    toc_float: yes
+---
+
+## Load data
+
+```{r load_data}
+# Created in clean-dataset.Rmd
+load(here::here("data/clean-dataset.RData"))
+
+# Objects: model, df_test2, pred_probs
+load(here::here("data/boosting.RData"))
+
+library(dplyr)
+library(ggplot2)
+```
+
+## Performance evaluation
+
+Our evaluation of a model should be based on how we intend to use the model - which we often call the "clinical use case" or "clinical use scenario". How would a model be used to improve patient care, inform decisions, or develop theory?
+
+What model uses cases are you thinking about?
+
+In general though, we usually want to evaluate three types of model performance: discrimination, calibration, and net benefit. A fairness analysis might further evaluate those dimensions of performance when stratifying by subgroups like race, age, and/or gender.
+
+## Discrimination: area under the curve
+
+Area under the curve (AUC) is a metric that evaluates how well one variable (e.g. a probability prediction, but not necessarily) sorts a binary outcome. It ranges from 0 to 1, where 1 = perfect prediction, 0.5 = random guessing, and < 0.5 means that you should multiply your variable by -1 and use that to sort.
+
+The intuition for it is: if I take a random case (aka outcome = 1) and a random control (aka outcome = 0), how often does my variable result in the case (Y = 1) having a higher value than the control (Y = 0).
+
+Specifically, it is the area under the receiver operator characteristic curve, which is a curve where the model's sensitivity and specificity are plotted at every possible unique value of the probability prediction.
+
+**Sensitivity**: what % of cases exceed a certain risk threshold? I.e. what % of cases do we flag correctly?
+> We can lower the threshold to increase sensitivity, but we will be flagging more patients (i.e. higher treatment volume, lower specificity).
+
+**Specificity**: what % of controls do not exceed the risk threshold? I.e. what % of controls do we correctly not flag?
+> We can increase the threshold to increase specificity, but we will be treating fewer patients (lower sensitivity, lower impact on population).
+
+
+```{r}
+# Define ROC characteristics
+(rocCurve = pROC::roc(response = df_test2$depression,
+                      predictor = pred_probs[, "yes"],
+                      levels = c(0, 1),
+                      direction = "<",
+                      # Looks nicer but much slower to run, and can hide complexity (e.g. ties).
+                      # smooth = TRUE,
+                      auc = TRUE, ci = TRUE))
+
+(thresholds = seq(0.2, 0.8, length.out = 4))
+
+# Plot ROC curve - sadly ugly.
+plot(rocCurve, 
+     print.thres.cex = 2,
+     print.auc = TRUE, # Nice to include the 95% CI as well.
+     print.thres = thresholds,
+     main = "XGBoost on test set", col = "blue", las = 1) 
+
+# Get specificity and sensitivity at particular threshold
+pROC::coords(rocCurve, 0.3, transpose = FALSE)
+```
+
+Nowadays, people also calculate area under the precision-recall curve (aka "average precision" in computer vision literature), which is argued to be more informative when the outcome is not evently distributed between 1 and 0 (e.g. the prevalence is low). But its value is not clear and we won't get into it today due to time limitations.
+
+## Calibration
+
+Remember that AUC is a scale-invariant metric: it does not require that the predictive variable is a probability, although we often want ML models to generate probabilities. Calibration is about assessing the accuracy of a model's predictions if interpreted as probabilities.
+
+Patients and clinicians are only able to act rationally in terms of decision-making to maximize utility within cost-benefit scenarios if they have calibrated risk probabilities (*or a causal benefit estimate, but that's a separate workshop). So calibration is important in healthcare and we should strive for it.
+
+There are a few ways we can evaluate calibration:
+
+1. Regress our prediction on the outcome, and see how significant the intercept and beta coefficient are.
+2. Group the sample into quantile-based bins and comparing actual risk to average predicted risk
+3. Plot the predicted probabilities vs the observed risk, potentially based on bins or moving average smooths (lowess).
+4. Calculate summary statistics
+
+Let's do that.
+
+### Regression eval
+
+```{r calibration}
+
+df_cal = data.frame(y = df_test2[[outcome]],
+                    # Predictions from xgboost
+                    pred = pred_probs$yes)
+
+####
+# Regression check.
+reg = glm(y ~ pred, data = df_cal, family = binomial())
+
+# Ouch 😭
+summary(reg)
+
+# OLS is similar and a bit easier to interpret:
+summary(lm(y ~ pred, data = df_cal))
+```
+
+### Decile-binned calibration
+
+
+```{r cal_quantiles}
+
+df_cal$decile = ntile(df_cal$pred, 10L)
+
+(cal_tab = df_cal |> group_by(decile) |>
+  summarize(n = scales::comma(n()),
+            pred_risk = mean(pred),
+            actual_risk = mean(y),
+            pred_over_actual = scales::number(pred_risk / actual_risk, accuracy = 0.01),
+            pred_minus_actual = scales::percent(pred_risk - actual_risk, accuracy = 0.001)) |>
+  mutate(pred_risk = scales::percent(pred_risk, accuracy = 0.001),
+         actual_risk = scales::percent(actual_risk, accuracy = 0.001)) |>
+  as.data.frame())
+
+
+(group_table = df_cal |> group_by(decile) |>
+  summarize(pred_risk = mean(pred),
+            actual_risk = mean(y),
+            pred_over_actual = pred_risk / actual_risk,
+            pred_minus_actual = pred_risk - actual_risk))
+
+```
+
+### Calibration plot(s)
+
+```{r plots}
+
+#####
+# Group-based plot
+
+# Another way to make quantile-based groups.
+df_cal$groups_10 = Hmisc::cut2(df_cal$pred, g = 10L)
+table(df_cal$groups_10, useNA = "ifany")
+
+# Run regression with no intercept.
+# This gives us the point estimate and the standard error for the CIs.
+# Could do lm() but CIs might not respect [0, 1] bounds.
+reg = glm(y ~ groups_10 - 1, data = df_cal)
+summary(reg)
+(conf_int = data.frame(confint(reg)))
+names(conf_int) = c("ci_lower", "ci_upper")
+
+# Combine everything into a group dataframe.
+group_df =
+  cbind.data.frame(
+    group = seq(10),
+    cutpoints = levels(df_cal$groups_10),
+    pred_risk = tapply(df_cal$pred, df_cal$groups_10, mean),
+    point_est = coef(reg),
+    conf_int
+)
+
+rownames(group_df) = NULL
+group_df
+
+# Pre-calculate loess smooth to speed up plot.
+smooth = stats::loess(y ~ pred, data = df_cal, span = 0.35)
+df_cal$smooth = smooth$fitted
+
+# Smoothed calibration plot.
+(p1 = ggplot(data = df_cal, aes(x = pred, y = smooth)) + 
+    # loess smoothing is slow due to sample size.
+    #geom_smooth(method = "loess", span = 0.35) +
+    geom_line() +
+    theme_minimal() +
+    geom_abline(slope = 1, intercept = 0, color = "red") +
+    scale_x_continuous(labels = scales::percent_format(accuracy = 1)) +
+    scale_y_continuous(labels = scales::percent_format(accuracy = 1), limits = c(0, 1)) +
+    # Add grouped points + CIs that we just calculated above.
+    geom_point(data = group_df, aes(x = pred_risk, y = point_est),
+               show.legend = FALSE) +
+    geom_errorbar(data = group_df,
+                  aes(ymin = ci_lower, ymax = ci_upper,
+                      x = pred_risk, y = point_est),
+                alpha = 0.8) +
+    labs(x = "Predicted risk", y = "Observed risk"))
+
+# Density plot of sample distribution across predicted probability.
+(p2 = ggplot(data = df_cal, aes(x = pred)) +
+  geom_density(fill = "gray70", color = "gray40") +
+  theme_minimal() + labs(y = "Sample\nDistribution") +
+  theme(axis.title.x = element_blank(),
+        axis.title.y = element_text(size = 8),
+        # Include x-axis major gridlines to ensure that plots are aligned.
+        panel.grid.major.y = element_blank(),
+        panel.grid.minor = element_blank(),
+        axis.text.x = element_blank(),
+        axis.text.y = element_blank()))
+
+# Stack the two plots.
+cowplot::plot_grid(p1, p2, align = "v", ncol = 1, rel_heights = c(0.8, 0.2))
+```
+
+### Statistical calibration metrics
+
+```{r stats}
+# Mean absolute error
+mean(abs(df_cal$smooth - df_cal$pred))
+
+# Then there's this bad boy:
+rms::val.prob(df_cal$pred, df_cal$y, g = 10L)
+
+
+```
+
+> Is Brier score a measure of calibration? Not directly. Brier score (i.e. mean-squared error) reflects both discrimination and calibration in a single metric, so a lower Brier score does not guarantee that a model is better calibrated - it may have worse calibration but better discrimination. For this reason we call Brier score a measure of "overall performance."
+
+## Clinical utility: net benefit
+
+To best evaluate the impact of a model at improving clinical decision-making, we turn to net benefit. While invented back in 2006, it is only recently gaining more acceptance as an important metric for clinical ML.
+
+Originating from clinical decision theory, it asks: if I use my model's prediction to determine which patients to treat based on a certain risk threshold (e.g. a screening guideline saying treat patients with risk >= 10%), what % of patients evaluated and treated will be cases (true positives) and we need to penalize that number based on the % of patients treated and evaluted who are controls (false positives).
+
+The first percentage is the patients who benefited, and the second percentage is the patients who were harmed (overtreated). But we need to make an ethical decision about how we weight those two percentages, which would be based on our understanding of the expected harms and benefits of the specific intervention - plus potentially patient or clinician preferences for risk. In turns out that we should weight the harms by the `risk threshold / (1 - risk threshold)`.
+
+If we plan to intervene if a patient's risk is 50% or greater, that means we would weight the false negatives by 0.5 / (1 - 0.5) = 0.5 / 0.5 = 1. Meaning that at a (generally high) intervention threshold of 50% or greater, we care equally about finding true positives as we do avoiding false positives (treating patients who would end up not needing to be treated). Whereas if we plan to intervene at 10% risk or greater, 0.1 / (1 - 0.1) = 0.1 / 0.9 = 1 / 9. Meaning that we are fine with treating one case even if as many as 9 controls also get treated.
+
+We almost never have a single intervention threshold that is an established screening guideline, so instead we evaluate net benefit across a range of risk thresholds that are clinically meaningful. As a heuristic, something like twice or triple the prevalence can be a good approximation for outcomes with low prevalence. At any specific risk (point on the x-axis), the model with the highest net benefit (point on the y-axis) will lead to the best clinical outcomes.
+
+This also addresses a limitation of our AUC and calibration evaluations: we evaluated across the whole range of risk (0% - 100%). But there is no clinical benefit from improved discrimination or calibration if it wouldn't change a decision. E.g. in the ROC curve, we looked at all possible sensitivities, whereas realistically we don't typically have the treatment resources for a threshold that would result in 99% sensitivity - we would be interventing on almost every patient who is tested. Similarly for calibration, if clinicians want to treat patients with >5% risk, a model that has improved calibration in the 50% - 80% risk region but worse calibration in the 4-6% region could be harmful compared to a model well calibrated especially in the 4-6% risk region.
+
+```{r net_benefit}
+library(dcurves)
+
+# Double-check prevalence
+mean(df_cal$y)
+
+thresholds = seq(0.4, 0.8, length.out = 50)
+
+system.time({
+  # In this formula, we could include multiple models for comparison on the right-hand side.
+dca_analysis = dca(y ~ pred,
+    data = df_cal,
+    thresholds = thresholds,
+    label = list(pred = "XGBoost"))
+})
+
+(p1 = dca_analysis  |>
+  plot(smooth = FALSE, show_ggplot_code = FALSE) +
+    theme(
+      legend.position = "inside",
+      legend.position.inside = c(0.75, 0.75),
+      legend.title = element_blank(),
+      legend.margin = margin(l = 3, r = 3, b = 1, t = -3),
+      legend.background = element_rect(color = "#f0f0f0",
+                                   fill = "#fafafa")))
+
+```
+
+> Warning: we don't select the threshold based on the net benefit, as tempting as it may be. We select the best model given a certain risk threshold. The choice of an intervention threshold is inherently an ethical decision about the relative weighting between true and false positives, which can't be derived from performance data.
+
+If you use ML and evaluate it with net benefit, Chris will give you a virtual gold star.
+
+## Challenges
+
+1. Multiply the test set probability predictions by 2. Does it change the AUC? What about the calibration and net benefit?
+2. See if you can extract the random forest prediction and add to the net benefit plot.

@@ -1,0 +1,53 @@
+---
+title: "Auto ML"
+author: "Chris Kennedy"
+date: "2025-08-28"
+output:
+  html_document:
+    toc: yes
+    toc_depth: 3
+    toc_float: yes
+---
+
+
+```{r load_data}
+# Created in clean-dataset.Rmd
+load(here::here("data/clean-dataset.RData"))
+
+library(h2o)
+# By default this will use all available CPU cores, which will swamp a shared server.
+# On a shared server, may need to change default port, and set username and password.
+h2o.init(nthreads = 1L)
+library(tidymodels)
+library(agua)
+```
+## Auto ML
+
+```{r auto_ml}
+# We need this to be TRUE.
+agua::h2o_running()
+
+# Convert outcome to a factor... sigh.
+df[[outcome]] = factor(df[[outcome]], labels = c("no", "yes"))
+
+?details_auto_ml_h2o
+# Via https://agua.tidymodels.org/reference/automl-tools.html#ref-examples
+# See ?details_auto_ml_h2o
+auto_fit = auto_ml() |>
+   set_engine("h2o",
+              # In reality we might set this to 24 hours or something big.
+              max_runtime_secs = 5,
+              validation = 0.2,
+              exclude_algos = NULL)  |>
+   set_mode("classification") |>
+   # Factor variables will automatically be converted to indicator variables here.
+   fit(depression ~ ., data = df[, c(predictors, outcome)])
+
+auto_fit
+
+# Plot all the metrics.
+autoplot(auto_fit)
+
+```
+
+See https://agua.tidymodels.org/articles/auto_ml.html for a much better tutorial!

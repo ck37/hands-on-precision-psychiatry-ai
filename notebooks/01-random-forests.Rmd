@@ -155,6 +155,13 @@ ggplot(mapping = aes(x = x_span, y = y_span)) + geom_line() + theme_minimal() +
 
 ```
 
+## Save results
+
+```{r save_results}
+save(rf1, mlr_rf,
+     file = here::here("data/random-forest.RData"))
+```
+
 ## Challenges
 
 1.  Review the help page for ranger and identify at least two hyperparameters you want to change. Modify them, re-run, and see how things look. Any impact on performance?
