@@ -1,4 +1,6 @@
-FROM rocker/verse:4.5
+# No 4.5 version yet sadly.
+# https://hub.docker.com/r/rocker/verse
+FROM rocker/verse:4.4
 
 RUN install2.r --error --skipinstalled -n -1 \
         pandoc \
