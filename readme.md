@@ -1,12 +1,10 @@
 # Hands-On AI in Precision Psychiatry
 
-Possible hosting strategies: Posit Cloud for RStudio (for instructors)[https://posit.cloud/plans/instructor?option=instructor-student-pay] may be the best bet.
-
 ## Content outline
 
-** Module 0**: Background / intro to AI and ML
+**Module 0**: Background / intro to AI and ML
 
-** Module 1**: Supervised machine learning
+**Module 1**: Supervised machine learning
 
   *	Highest value machine learning algorithms
     * Random forest
