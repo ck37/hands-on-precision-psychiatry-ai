@@ -16,6 +16,7 @@ load(here::here("data/clean-dataset.RData"))
 
 library(SuperLearner)
 library(glmnet)
+library(ggplot2)
 ```
 
 The ["SuperLearner" R package](https://cran.r-project.org/web/packages/SuperLearner/index.html) is a method that simplifies ensemble learning by allowing you to simultaneously evaluate the cross-validated performance of multiple algorithms and/or a single algorithm with differently tuned hyperparameters. This is a generally advisable approach to machine learning instead of fitting single algorithms. 
