@@ -68,6 +68,35 @@ plot(cv_sl) + theme_minimal()
 
 "Discrete SL" is when the SuperLearner chooses the single algorithm with the lowest risk. "SuperLearner" is a weighted average of multiple algorithms, or an "ensemble". In theory the weighted-average should have a little better performance, although they often tie. In this case we only have a few algorithms so the difference is minor.  
 
+## Add feature selection
+
+```{r sl_feature_sel}
+# We use the existing screener for randomForest here out of expedience.
+library(randomForest)
+
+# Existing screening wrappers
+SuperLearner::listWrappers(what = "screen")
+
+# View the code - it's pretty short.
+# By default it's picking the top 10 variables based on RF importance.
+screen.randomForest
+
+# This is a seed that is compatible with multicore parallel processing.
+# See ?set.seed for more information.
+set.seed(1, "L'Ecuyer-CMRG") 
+cv_sl =
+  SuperLearner::CV.SuperLearner(Y = df[[outcome]],
+                                # We're removing degree & city due to rare factor levels.
+                                X = df[, setdiff(predictors, c("degree", "city"))],
+                                verbose = FALSE,
+                                # Quick feature selection example
+                                 SL.library = list("SL.mean", "SL.glmnet", c("SL.ranger", "screen.randomForest")),
+                                family = binomial(),
+                                # For a publication we would do V = 10 or 20
+                                cvControl = list(V = 2L, stratifyCV = TRUE))
+summary(cv_sl)
+```
+
 ## Combined hyperparameter optimization and ensembling
 
 Instead of tuning, we just include multiple versions of the algorihtm and let the ensemble decide.
@@ -133,3 +162,4 @@ print(cvsl_weights(cv_sl), row.names = FALSE)
 A longer tutorial on SuperLearner is available here: (https://github.com/ck37/superlearner-guide)
 
 Kat Hoffman's SuperLearner tutorial
+Hoffman, K. (2020). Become a Superlearner! An Illustrated Guide to Superlearning. https://www.khstats.com/blog/sl/superlearning
