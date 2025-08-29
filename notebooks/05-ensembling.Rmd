@@ -37,7 +37,7 @@ sl_lib = c("SL.mean", "SL.glm", "SL.glmnet", "SL.rpart", "SL.ranger", "SL.xgboos
 
 Fit the ensemble! 
 
-```{r}
+```{r fit_ensemble}
 # This is a seed that is compatible with multicore parallel processing.
 # See ?set.seed for more information.
 set.seed(1, "L'Ecuyer-CMRG") 

@@ -13,6 +13,8 @@ output:
 library(fastshap)
 library(treeshap)
 library(iml)
+library(ranger)
+library(ggplot2)
 ```
 
 ## Load dataset
@@ -33,7 +35,7 @@ load(here::here("data/random-forest.RData"))
 
 Because it's more fun.
 
-```{r}
+```{r local_shap}
 library(fastshap)
 library(shapviz)
   
@@ -103,4 +105,6 @@ sv_importance(shap_viz, kind = "beeswarm", max_display = Inf)  + theme_minimal()
 
 ## Further reading
 
+TreeSHAP nature machine intelligence
 
+Interpretable machine learning book
