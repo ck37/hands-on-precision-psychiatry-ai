@@ -2,13 +2,12 @@
 title: "Clean dataset"
 author: "Chris Kennedy"
 date: "2025-08-28"
-output:
-  html_document:
-    toc: yes
+format:
+  html:
+    toc: true
     toc_depth: 3
     toc_float: yes
 ---
-
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
@@ -109,7 +108,6 @@ We could potentially impute missing values (e.g. `missRanger`) and add missingne
 
 ## Define predictors and outcome
 
-
 ```{r define_predictors}
 # Identifier for each participant - important to not be included as a predictor.
 id = "id"
@@ -166,4 +164,3 @@ names(df)
 save(df, id, predictors, outcome, df_test,
      file = paste0(dir_data, "clean-dataset.RData"))
 ```
-

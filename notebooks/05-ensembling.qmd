@@ -1,0 +1,137 @@
+---
+title: "Ensembling"
+author: "Chris Kennedy"
+date: "2025-08-28"
+format:
+  html:
+    toc: true
+    toc_depth: 3
+    toc_float: yes
+---
+
+
+```{r load_data}
+# Created in clean-dataset.Rmd
+load(here::here("data/clean-dataset.RData"))
+
+suppressMessages({ # hide unnecessary messages when loading these.
+library(SuperLearner)
+library(glmnet)
+library(ggplot2)
+})
+```
+
+The ["SuperLearner" R package](https://cran.r-project.org/web/packages/SuperLearner/index.html) is a method that simplifies ensemble learning by allowing you to simultaneously evaluate the cross-validated performance of multiple algorithms and/or a single algorithm with differently tuned hyperparameters. This is a generally advisable approach to machine learning instead of fitting single algorithms. 
+
+Let's see how some populare algorithms compare to each other and also to binary logistic regression (`glm`) and to the outcome prevalence as a benchmark algorithm, in terms of their cross-validated error!  
+
+A "wrapper" is a short function that adapts an algorithm for the SuperLearner package. Check out the different algorithm wrappers offered by SuperLearner:
+
+## Choose algorithms
+
+```{r choose_algos}
+SuperLearner::listWrappers()
+
+# Compile the algorithm wrappers to be used.
+sl_lib = c("SL.mean", "SL.glm", "SL.glmnet", "SL.rpart", "SL.ranger", "SL.xgboost")
+```
+
+## Fit
+
+Fit the ensemble! 
+
+```{r fit_ensemble}
+# This is a seed that is compatible with multicore parallel processing.
+# See ?set.seed for more information.
+set.seed(1, "L'Ecuyer-CMRG") 
+
+cv_sl =
+  SuperLearner::CV.SuperLearner(Y = df[[outcome]],
+                                # We're removing degree & city due to rare factor levels.
+                                X = df[, setdiff(predictors, c("degree", "city"))],
+                                verbose = FALSE,
+                                SL.library = sl_lib,
+                                family = binomial(),
+                                # For a publication we would do V = 10 or 20
+                                cvControl = list(V = 2L, stratifyCV = TRUE))
+summary(cv_sl)
+```
+
+### Risk
+
+Risk is a performance estimate - it's the average loss, and loss is how far off the prediction was for an individual observation. The lower the risk, the fewer errors the model makes in its prediction. SuperLearner's default loss metric is squared error $(y_{actual} - y_{predicted})^2$, so the risk is the mean-squared error (just like in ordinary least _squares_ regression). View the summary, plot results, and compute the AUC!
+
+### Plot the risk
+
+```{r cvsl_review}
+# Plot the cross-validated risk estimate.
+plot(cv_sl) + theme_minimal()
+```
+
+"Discrete SL" is when the SuperLearner chooses the single algorithm with the lowest risk. "SuperLearner" is a weighted average of multiple algorithms, or an "ensemble". In theory the weighted-average should have a little better performance, although they often tie. In this case we only have a few algorithms so the difference is minor.  
+
+## Combined hyperparameter optimization and ensembling
+
+Instead of tuning, we just include multiple versions of the algorihtm and let the ensemble decide.
+
+```{r combined_ensemble_hyperopt}
+# Make an xgboost grid
+# 3 * 3 * 3 = 27 different configurations.
+# For a real analysis we would do 100, 500, or 1000 trees - this is just a demo.
+xgb_tune = list(ntrees = c(10, 20, 50),
+            max_depth = 1:3,
+            shrinkage = c(0.1, 0.2, 0.3))
+
+# Set detailed names = T so we can see the configuration for each function.
+# Also shorten the name prefix.
+xgb_learners = create.Learner("SL.xgboost", tune = xgb_tune, detailed_names = TRUE, name_prefix = "xgb")
+
+# 27 configurations - not too shabby.
+length(xgb_learners$names)
+
+set.seed(4)
+cv_sl =
+  SuperLearner::CV.SuperLearner(Y = df[[outcome]],
+                                # We're removing degree & city due to rare factor levels.
+                                X = df[, setdiff(predictors, c("degree", "city"))],
+                                verbose = FALSE,
+                                SL.library = c(sl_lib,
+                                               # Sample 5 XGB configs at random, a form of random search.
+                                               sample(xgb_learners$names, 5)),
+                                family = binomial(),
+                                # For a publication we would do V = 10 or 20
+                                cvControl = list(V = 2L, stratifyCV = TRUE))
+summary(cv_sl)
+plot(cv_sl) + theme_minimal()
+```
+
+## Bonus functions to try out if interested
+
+We'll skip this out of time consideration.
+
+```{r ck37r, eval = FALSE}
+# Install this library if you're interested:
+# https://github.com/ck37/ck37r
+library(ck37r)
+
+# Compute AUC estimators
+auc_table(cv_sl)
+
+# Plot the ROC curve for the best estimator
+plot_roc(cv_sl)
+
+# Review weight distribution for the SuperLearner
+print(cvsl_weights(cv_sl), row.names = FALSE)
+```
+
+## Challenges
+
+1. Add another algorithm to two to the SuperLearner. Do you see any variation?
+
+2. Can you improve the tuning grid for xgboost?
+
+## Further reading
+
+A longer tutorial on SuperLearner is available here: (https://github.com/ck37/superlearner-guide)
+
+Kat Hoffman's SuperLearner tutorial

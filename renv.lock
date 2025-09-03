@@ -547,7 +547,7 @@
       "NeedsCompilation": "no",
       "Author": "Winston Chang [aut, cre], Posit Software, PBC [cph, fnd]",
       "Maintainer": "Winston Chang <winston@posit.co>",
-      "Repository": "https://packagemanager.posit.co/cran/__linux__/noble/latest"
+      "Repository": "RSPM"
     },
     "RColorBrewer": {
       "Package": "RColorBrewer",
@@ -1006,7 +1006,7 @@
       "License": "GPL-2 | GPL-3",
       "URL": "http://www.rforge.net/base64enc",
       "NeedsCompilation": "yes",
-      "Repository": "https://packagemanager.posit.co/cran/__linux__/noble/latest",
+      "Repository": "RSPM",
       "Encoding": "UTF-8"
     },
     "bit": {
@@ -1272,7 +1272,7 @@
       "NeedsCompilation": "no",
       "Author": "Carson Sievert [aut, cre] (<https://orcid.org/0000-0002-4958-2844>), Joe Cheng [aut], Garrick Aden-Buie [aut] (<https://orcid.org/0000-0002-7111-0077>), Posit Software, PBC [cph, fnd], Bootstrap contributors [ctb] (Bootstrap library), Twitter, Inc [cph] (Bootstrap library), Javi Aguilar [ctb, cph] (Bootstrap colorpicker library), Thomas Park [ctb, cph] (Bootswatch library), PayPal [ctb, cph] (Bootstrap accessibility plugin)",
       "Maintainer": "Carson Sievert <carson@posit.co>",
-      "Repository": "https://packagemanager.posit.co/cran/__linux__/noble/latest"
+      "Repository": "RSPM"
     },
     "caTools": {
       "Package": "caTools",
@@ -1324,7 +1324,7 @@
       "NeedsCompilation": "yes",
       "Author": "Winston Chang [aut, cre], Posit Software, PBC [cph, fnd]",
       "Maintainer": "Winston Chang <winston@posit.co>",
-      "Repository": "https://packagemanager.posit.co/cran/__linux__/noble/latest"
+      "Repository": "RSPM"
     },
     "caret": {
       "Package": "caret",
@@ -1543,7 +1543,7 @@
       "NeedsCompilation": "yes",
       "Author": "Gábor Csárdi [aut, cre], Hadley Wickham [ctb], Kirill Müller [ctb], Salim Brüggemann [ctb] (<https://orcid.org/0000-0002-5329-5987>), Posit Software, PBC [cph, fnd]",
       "Maintainer": "Gábor Csárdi <gabor@posit.co>",
-      "Repository": "https://packagemanager.posit.co/cran/__linux__/noble/latest"
+      "Repository": "RSPM"
     },
     "clipr": {
       "Package": "clipr",
@@ -2160,7 +2160,7 @@
       "NeedsCompilation": "yes",
       "Author": "Dirk Eddelbuettel [aut, cre] (<https://orcid.org/0000-0001-6419-907X>), Antoine Lucas [ctb], Jarek Tuszynski [ctb], Henrik Bengtsson [ctb] (<https://orcid.org/0000-0002-7579-5165>), Simon Urbanek [ctb] (<https://orcid.org/0000-0003-2297-1732>), Mario Frasca [ctb], Bryan Lewis [ctb], Murray Stokely [ctb], Hannes Muehleisen [ctb], Duncan Murdoch [ctb], Jim Hester [ctb], Wush Wu [ctb] (<https://orcid.org/0000-0001-5180-0567>), Qiang Kou [ctb] (<https://orcid.org/0000-0001-6786-5453>), Thierry Onkelinx [ctb] (<https://orcid.org/0000-0001-8804-4216>), Michel Lang [ctb] (<https://orcid.org/0000-0001-9754-0393>), Viliam Simko [ctb], Kurt Hornik [ctb] (<https://orcid.org/0000-0003-4198-9911>), Radford Neal [ctb] (<https://orcid.org/0000-0002-2473-3407>), Kendon Bell [ctb] (<https://orcid.org/0000-0002-9093-8312>), Matthew de Queljoe [ctb], Dmitry Selivanov [ctb], Ion Suruceanu [ctb], Bill Denney [ctb], Dirk Schumacher [ctb], András Svraka [ctb], Sergey Fedorov [ctb], Will Landau [ctb] (<https://orcid.org/0000-0003-1878-3253>), Floris Vanderhaeghe [ctb] (<https://orcid.org/0000-0002-6378-6229>), Kevin Tappe [ctb], Harris McGehee [ctb], Tim Mastny [ctb], Aaron Peikert [ctb] (<https://orcid.org/0000-0001-7813-818X>), Mark van der Loo [ctb] (<https://orcid.org/0000-0002-9807-4686>), Chris Muir [ctb] (<https://orcid.org/0000-0003-2555-3878>), Moritz Beller [ctb] (<https://orcid.org/0000-0003-4852-0526>), Sebastian Campbell [ctb], Winston Chang [ctb] (<https://orcid.org/0000-0002-1576-2126>), Dean Attali [ctb] (<https://orcid.org/0000-0002-5645-3493>), Michael Chirico [ctb] (<https://orcid.org/0000-0003-0787-087X>), Kevin Ushey [ctb]",
       "Maintainer": "Dirk Eddelbuettel <edd@debian.org>",
-      "Repository": "https://packagemanager.posit.co/cran/__linux__/noble/latest"
+      "Repository": "RSPM"
     },
     "doFuture": {
       "Package": "doFuture",
@@ -2294,7 +2294,8 @@
       "NeedsCompilation": "yes",
       "Author": "David Meyer [aut, cre] (<https://orcid.org/0000-0002-5196-3048>), Evgenia Dimitriadou [aut, cph], Kurt Hornik [aut] (<https://orcid.org/0000-0003-4198-9911>), Andreas Weingessel [aut], Friedrich Leisch [aut], Chih-Chung Chang [ctb, cph] (libsvm C++-code), Chih-Chen Lin [ctb, cph] (libsvm C++-code)",
       "Maintainer": "David Meyer <David.Meyer@R-project.org>",
-      "Repository": "CRAN"
+      "Repository": "RSPM",
+      "Encoding": "UTF-8"
     },
     "evaluate": {
       "Package": "evaluate",
@@ -2330,7 +2331,7 @@
       "NeedsCompilation": "no",
       "Author": "Hadley Wickham [aut, cre], Yihui Xie [aut] (ORCID: <https://orcid.org/0000-0003-0645-5666>), Michael Lawrence [ctb], Thomas Kluyver [ctb], Jeroen Ooms [ctb], Barret Schloerke [ctb], Adam Ryczkowski [ctb], Hiroaki Yutani [ctb], Michel Lang [ctb], Karolis Koncevičius [ctb], Posit Software, PBC [cph, fnd]",
       "Maintainer": "Hadley Wickham <hadley@posit.co>",
-      "Repository": "https://packagemanager.posit.co/cran/__linux__/noble/latest"
+      "Repository": "RSPM"
     },
     "farver": {
       "Package": "farver",
@@ -2373,7 +2374,7 @@
       "NeedsCompilation": "yes",
       "Author": "Winston Chang [aut, cre], Posit Software, PBC [cph, fnd], Tessil [cph] (hopscotch_map library)",
       "Maintainer": "Winston Chang <winston@posit.co>",
-      "Repository": "https://packagemanager.posit.co/cran/__linux__/noble/latest"
+      "Repository": "RSPM"
     },
     "fastmatch": {
       "Package": "fastmatch",
@@ -2473,7 +2474,7 @@
       "NeedsCompilation": "no",
       "Author": "Richard Iannone [aut, cre] (<https://orcid.org/0000-0003-3925-190X>), Christophe Dervieux [ctb] (<https://orcid.org/0000-0003-4474-2498>), Winston Chang [ctb], Dave Gandy [ctb, cph] (Font-Awesome font), Posit Software, PBC [cph, fnd]",
       "Maintainer": "Richard Iannone <rich@posit.co>",
-      "Repository": "https://packagemanager.posit.co/cran/__linux__/noble/latest"
+      "Repository": "RSPM"
     },
     "forcats": {
       "Package": "forcats",
@@ -2623,7 +2624,7 @@
       "NeedsCompilation": "yes",
       "Author": "Jim Hester [aut], Hadley Wickham [aut], Gábor Csárdi [aut, cre], libuv project contributors [cph] (libuv library), Joyent, Inc. and other Node contributors [cph] (libuv library), Posit Software, PBC [cph, fnd]",
       "Maintainer": "Gábor Csárdi <csardi.gabor@gmail.com>",
-      "Repository": "https://packagemanager.posit.co/cran/__linux__/noble/latest"
+      "Repository": "RSPM"
     },
     "furrr": {
       "Package": "furrr",
@@ -3106,7 +3107,7 @@
       "NeedsCompilation": "yes",
       "Author": "Jim Hester [aut] (<https://orcid.org/0000-0002-2739-7082>), Jennifer Bryan [aut, cre] (<https://orcid.org/0000-0002-6983-2759>), Posit Software, PBC [cph, fnd]",
       "Maintainer": "Jennifer Bryan <jenny@posit.co>",
-      "Repository": "https://packagemanager.posit.co/cran/__linux__/noble/latest"
+      "Repository": "RSPM"
     },
     "gower": {
       "Package": "gower",
@@ -3315,13 +3316,13 @@
     },
     "h2o": {
       "Package": "h2o",
-      "Version": "3.44.0.3",
+      "Version": "3.46.0.7",
       "Source": "Repository",
       "Type": "Package",
       "Title": "R Interface for the 'H2O' Scalable Machine Learning Platform",
-      "Date": "2023-12-20",
+      "Date": "2025-03-27",
       "Authors@R": "c( person(\"Tomas\", \"Fryda\", role = c(\"aut\", \"cre\"), email = \"tomas.fryda@h2o.ai\"), person(\"Erin\", \"LeDell\", role = c(\"aut\")), person(\"Navdeep\", \"Gill\", role = c(\"aut\")), person(\"Spencer\", \"Aiello\", role = c(\"aut\")), person(\"Anqi\", \"Fu\", role = c(\"aut\")), person(\"Arno\", \"Candel\", role = c(\"aut\")), person(\"Cliff\", \"Click\", role = c(\"aut\")), person(\"Tom\", \"Kraljevic\", role = c(\"aut\")), person(\"Tomas\", \"Nykodym\", role = c(\"aut\")), person(\"Patrick\", \"Aboyoun\", role = c(\"aut\")), person(\"Michal\", \"Kurka\", role = c(\"aut\")), person(\"Michal\", \"Malohlava\", role = c(\"aut\")), person(\"Sebastien\", \"Poirier\", role=c(\"aut\")), person(\"Wendy\", \"Wong\", role = c(\"aut\")), person(\"Ludi\", \"Rehak\", role = c(\"ctb\")), person(\"Eric\", \"Eckstrand\", role = c(\"ctb\")), person(\"Brandon\", \"Hill\", role = c(\"ctb\")), person(\"Sebastian\", \"Vidrio\", role = c(\"ctb\")), person(\"Surekha\", \"Jadhawani\", role = c(\"ctb\")), person(\"Amy\", \"Wang\", role = c(\"ctb\")), person(\"Raymond\", \"Peck\", role = c(\"ctb\")), person(\"Jan\", \"Gorecki\", role = c(\"ctb\")), person(\"Matt\", \"Dowle\", role = c(\"ctb\")), person(\"Yuan\", \"Tang\", role = c(\"ctb\")), person(\"Lauren\", \"DiPerna\", role = c(\"ctb\")), person(\"Veronika\", \"Maurerova\", role=c(\"ctb\")), person(\"Yuliia\", \"Syzon\", role=c(\"ctb\")), person(\"Adam\", \"Valenta\", role=c(\"ctb\")), person(\"Marek\", \"Novotny\", role=c(\"ctb\")), person(\"H2O.ai\", role = c(\"cph\", \"fnd\")) )",
-      "Description": "R interface for 'H2O', the scalable open source machine learning platform that offers parallelized implementations of many supervised and unsupervised machine learning algorithms such as Generalized Linear Models (GLM), Gradient Boosting Machines (including XGBoost), Random Forests, Deep Neural Networks (Deep Learning), Stacked Ensembles, Naive Bayes, Generalized Additive Models (GAM), ANOVA GLM, Cox Proportional Hazards, K-Means, PCA, ModelSelection, Word2Vec, as well as a fully automatic machine learning algorithm (H2O AutoML).",
+      "Description": "R interface for 'H2O', the scalable open source machine learning platform that offers parallelized implementations of many supervised and unsupervised machine learning algorithms such as Generalized Linear Models (GLM), Gradient Boosting Machines (including XGBoost), Random Forests, Deep Neural Networks (Deep Learning), Stacked Ensembles, Naive Bayes, Generalized Additive Models (GAM), ANOVA GLM, Cox Proportional Hazards, K-Means, PCA, ModelSelection, Word2Vec, Hierarchical Generalized Linear Models (HGLM), as well as a fully automatic machine learning algorithm (H2O AutoML).",
       "License": "Apache License (== 2.0)",
       "URL": "https://github.com/h2oai/h2o-3",
       "BugReports": "https://github.com/h2oai/h2o-3/issues",
@@ -3357,12 +3358,11 @@
         "curl",
         "scales"
       ],
-      "RoxygenNote": "7.1.2",
-      "Collate": "'adaboost.R' 'admissibleml.R' 'aggregator.R' 'anovaglm.R' 'astfun.R' 'automl.R' 'classes.R' 'communication.R' 'config.R' 'connection.R' 'constants.R' 'coxph.R' 'coxphutils.R' 'datasets.R' 'decisiontree.R' 'deeplearning.R' 'edicts.R' 'explain.R' 'export.R' 'extendedisolationforest.R' 'frame.R' 'gam.R' 'gbm.R' 'generic.R' 'glm.R' 'glrm.R' 'grid.R' 'import.R' 'infogram.R' 'isolationforest.R' 'isotonicregression.R' 'kmeans.R' 'kvstore.R' 'locate.R' 'logging.R' 'models.R' 'modelselection.R' 'naivebayes.R' 'parse.R' 'pca.R' 'permutation_varimp.R' 'predict.R' 'psvm.R' 'randomforest.R' 'rulefit.R' 'segment.R' 'stackedensemble.R' 'svd.R' 'targetencoder.R' 'tf-idf.R' 'upliftrandomforest.R' 'w2vutils.R' 'word2vec.R' 'xgboost.R' 'zzz.R'",
+      "RoxygenNote": "7.2.2",
+      "Collate": "'adaboost.R' 'admissibleml.R' 'aggregator.R' 'anovaglm.R' 'astfun.R' 'automl.R' 'classes.R' 'communication.R' 'config.R' 'connection.R' 'constants.R' 'coxph.R' 'coxphutils.R' 'datasets.R' 'decisiontree.R' 'deeplearning.R' 'edicts.R' 'explain.R' 'export.R' 'extendedisolationforest.R' 'frame.R' 'gam.R' 'gbm.R' 'generic.R' 'glm.R' 'glrm.R' 'grid.R' 'hglm.R' 'import.R' 'infogram.R' 'isolationforest.R' 'isotonicregression.R' 'kmeans.R' 'kvstore.R' 'locate.R' 'logging.R' 'models.R' 'modelselection.R' 'naivebayes.R' 'parse.R' 'pca.R' 'permutation_varimp.R' 'pipeline.R' 'predict.R' 'psvm.R' 'randomforest.R' 'rulefit.R' 'segment.R' 'stackedensemble.R' 'svd.R' 'targetencoder.R' 'tf-idf.R' 'upliftrandomforest.R' 'w2vutils.R' 'word2vec.R' 'xgboost.R' 'zzz.R'",
       "Author": "Tomas Fryda [aut, cre], Erin LeDell [aut], Navdeep Gill [aut], Spencer Aiello [aut], Anqi Fu [aut], Arno Candel [aut], Cliff Click [aut], Tom Kraljevic [aut], Tomas Nykodym [aut], Patrick Aboyoun [aut], Michal Kurka [aut], Michal Malohlava [aut], Sebastien Poirier [aut], Wendy Wong [aut], Ludi Rehak [ctb], Eric Eckstrand [ctb], Brandon Hill [ctb], Sebastian Vidrio [ctb], Surekha Jadhawani [ctb], Amy Wang [ctb], Raymond Peck [ctb], Jan Gorecki [ctb], Matt Dowle [ctb], Yuan Tang [ctb], Lauren DiPerna [ctb], Veronika Maurerova [ctb], Yuliia Syzon [ctb], Adam Valenta [ctb], Marek Novotny [ctb], H2O.ai [cph, fnd]",
       "Maintainer": "Tomas Fryda <tomas.fryda@h2o.ai>",
-      "Repository": "RSPM",
-      "Encoding": "UTF-8"
+      "Repository": "http://h2o-release.s3.amazonaws.com/h2o/latest_stable_R"
     },
     "hardhat": {
       "Package": "hardhat",
@@ -3526,7 +3526,7 @@
       "NeedsCompilation": "no",
       "Author": "Yihui Xie [aut, cre] (<https://orcid.org/0000-0003-0645-5666>), Yixuan Qiu [aut], Christopher Gandrud [ctb], Qiang Li [ctb]",
       "Maintainer": "Yihui Xie <xie@yihui.name>",
-      "Repository": "https://packagemanager.posit.co/cran/__linux__/noble/latest"
+      "Repository": "RSPM"
     },
     "hms": {
       "Package": "hms",
@@ -3652,7 +3652,7 @@
       "NeedsCompilation": "yes",
       "Author": "Joe Cheng [aut], Carson Sievert [aut, cre] (<https://orcid.org/0000-0002-4958-2844>), Barret Schloerke [aut] (<https://orcid.org/0000-0001-9986-114X>), Winston Chang [aut] (<https://orcid.org/0000-0002-1576-2126>), Yihui Xie [aut], Jeff Allen [aut], Posit Software, PBC [cph, fnd]",
       "Maintainer": "Carson Sievert <carson@posit.co>",
-      "Repository": "https://packagemanager.posit.co/cran/__linux__/noble/latest"
+      "Repository": "RSPM"
     },
     "htmlwidgets": {
       "Package": "htmlwidgets",
@@ -3979,7 +3979,7 @@
       "NeedsCompilation": "no",
       "Author": "Carson Sievert [aut, cre] (<https://orcid.org/0000-0002-4958-2844>), Joe Cheng [aut], RStudio [cph], jQuery Foundation [cph] (jQuery library and jQuery UI library), jQuery contributors [ctb, cph] (jQuery library; authors listed in inst/lib/jquery-AUTHORS.txt)",
       "Maintainer": "Carson Sievert <carson@rstudio.com>",
-      "Repository": "https://packagemanager.posit.co/cran/__linux__/noble/latest"
+      "Repository": "RSPM"
     },
     "jsonlite": {
       "Package": "jsonlite",
@@ -4009,7 +4009,7 @@
       "Encoding": "UTF-8",
       "NeedsCompilation": "yes",
       "Author": "Jeroen Ooms [aut, cre] (<https://orcid.org/0000-0002-4035-0289>), Duncan Temple Lang [ctb], Lloyd Hilaiel [cph] (author of bundled libyajl)",
-      "Repository": "https://packagemanager.posit.co/cran/__linux__/noble/latest"
+      "Repository": "RSPM"
     },
     "knitr": {
       "Package": "knitr",
@@ -4073,7 +4073,7 @@
       "NeedsCompilation": "no",
       "Author": "Yihui Xie [aut, cre] (<https://orcid.org/0000-0003-0645-5666>, https://yihui.org), Abhraneel Sarma [ctb], Adam Vogt [ctb], Alastair Andrew [ctb], Alex Zvoleff [ctb], Amar Al-Zubaidi [ctb], Andre Simon [ctb] (the CSS files under inst/themes/ were derived from the Highlight package http://www.andre-simon.de), Aron Atkins [ctb], Aaron Wolen [ctb], Ashley Manton [ctb], Atsushi Yasumoto [ctb] (<https://orcid.org/0000-0002-8335-495X>), Ben Baumer [ctb], Brian Diggs [ctb], Brian Zhang [ctb], Bulat Yapparov [ctb], Cassio Pereira [ctb], Christophe Dervieux [ctb], David Hall [ctb], David Hugh-Jones [ctb], David Robinson [ctb], Doug Hemken [ctb], Duncan Murdoch [ctb], Elio Campitelli [ctb], Ellis Hughes [ctb], Emily Riederer [ctb], Fabian Hirschmann [ctb], Fitch Simeon [ctb], Forest Fang [ctb], Frank E Harrell Jr [ctb] (the Sweavel package at inst/misc/Sweavel.sty), Garrick Aden-Buie [ctb], Gregoire Detrez [ctb], Hadley Wickham [ctb], Hao Zhu [ctb], Heewon Jeon [ctb], Henrik Bengtsson [ctb], Hiroaki Yutani [ctb], Ian Lyttle [ctb], Hodges Daniel [ctb], Jacob Bien [ctb], Jake Burkhead [ctb], James Manton [ctb], Jared Lander [ctb], Jason Punyon [ctb], Javier Luraschi [ctb], Jeff Arnold [ctb], Jenny Bryan [ctb], Jeremy Ashkenas [ctb, cph] (the CSS file at inst/misc/docco-classic.css), Jeremy Stephens [ctb], Jim Hester [ctb], Joe Cheng [ctb], Johannes Ranke [ctb], John Honaker [ctb], John Muschelli [ctb], Jonathan Keane [ctb], JJ Allaire [ctb], Johan Toloe [ctb], Jonathan Sidi [ctb], Joseph Larmarange [ctb], Julien Barnier [ctb], Kaiyin Zhong [ctb], Kamil Slowikowski [ctb], Karl Forner [ctb], Kevin K. Smith [ctb], Kirill Mueller [ctb], Kohske Takahashi [ctb], Lorenz Walthert [ctb], Lucas Gallindo [ctb], Marius Hofert [ctb], Martin Modrák [ctb], Michael Chirico [ctb], Michael Friendly [ctb], Michal Bojanowski [ctb], Michel Kuhlmann [ctb], Miller Patrick [ctb], Nacho Caballero [ctb], Nick Salkowski [ctb], Niels Richard Hansen [ctb], Noam Ross [ctb], Obada Mahdi [ctb], Pavel N. Krivitsky [ctb] (<https://orcid.org/0000-0002-9101-3362>), Pedro Faria [ctb], Qiang Li [ctb], Ramnath Vaidyanathan [ctb], Richard Cotton [ctb], Robert Krzyzanowski [ctb], Rodrigo Copetti [ctb], Romain Francois [ctb], Ruaridh Williamson [ctb], Sagiru Mati [ctb] (<https://orcid.org/0000-0003-1413-3974>), Scott Kostyshak [ctb], Sebastian Meyer [ctb], Sietse Brouwer [ctb], Simon de Bernard [ctb], Sylvain Rousseau [ctb], Taiyun Wei [ctb], Thibaut Assus [ctb], Thibaut Lamadon [ctb], Thomas Leeper [ctb], Tim Mastny [ctb], Tom Torsney-Weir [ctb], Trevor Davis [ctb], Viktoras Veitas [ctb], Weicheng Zhu [ctb], Wush Wu [ctb], Zachary Foster [ctb], Zhian N. Kamvar [ctb] (<https://orcid.org/0000-0003-1458-7108>), Posit Software, PBC [cph, fnd]",
       "Maintainer": "Yihui Xie <xie@yihui.name>",
-      "Repository": "https://packagemanager.posit.co/cran/__linux__/noble/latest"
+      "Repository": "RSPM"
     },
     "labeling": {
       "Package": "labeling",
@@ -4268,7 +4268,7 @@
       "NeedsCompilation": "no",
       "Author": "Lionel Henry [aut, cre], Hadley Wickham [aut] (<https://orcid.org/0000-0003-4757-117X>), Posit Software, PBC [cph, fnd]",
       "Maintainer": "Lionel Henry <lionel@posit.co>",
-      "Repository": "https://packagemanager.posit.co/cran/__linux__/noble/latest"
+      "Repository": "RSPM"
     },
     "listenv": {
       "Package": "listenv",
@@ -4404,7 +4404,7 @@
       "NeedsCompilation": "yes",
       "Author": "Stefan Milton Bache [aut, cph] (Original author and creator of magrittr), Hadley Wickham [aut], Lionel Henry [cre], RStudio [cph, fnd]",
       "Maintainer": "Lionel Henry <lionel@rstudio.com>",
-      "Repository": "https://packagemanager.posit.co/cran/__linux__/noble/latest"
+      "Repository": "RSPM"
     },
     "markdown": {
       "Package": "markdown",
@@ -4466,7 +4466,7 @@
       "NeedsCompilation": "no",
       "Author": "Hadley Wickham [aut], Jim Hester [aut], Winston Chang [aut, cre], Kirill Müller [aut], Daniel Cook [aut], Mark Edmondson [ctb]",
       "Maintainer": "Winston Chang <winston@rstudio.com>",
-      "Repository": "https://packagemanager.posit.co/cran/__linux__/noble/latest"
+      "Repository": "RSPM"
     },
     "mgcv": {
       "Package": "mgcv",
@@ -4520,7 +4520,7 @@
       "NeedsCompilation": "yes",
       "Author": "Yihui Xie [aut, cre] (<https://orcid.org/0000-0003-0645-5666>, https://yihui.org), Jeffrey Horner [ctb], Beilei Bian [ctb]",
       "Maintainer": "Yihui Xie <xie@yihui.name>",
-      "Repository": "https://packagemanager.posit.co/cran/__linux__/noble/latest"
+      "Repository": "RSPM"
     },
     "mlr": {
       "Package": "mlr",
@@ -5458,7 +5458,8 @@
       "NeedsCompilation": "yes",
       "Author": "David Meyer [aut, cre], Christian Buchta [aut]",
       "Maintainer": "David Meyer <David.Meyer@R-project.org>",
-      "Repository": "CRAN"
+      "Repository": "RSPM",
+      "Encoding": "UTF-8"
     },
     "purrr": {
       "Package": "purrr",
@@ -5633,7 +5634,7 @@
       "NeedsCompilation": "yes",
       "Author": "Hadley Wickham [trl, cre, cph], RStudio [cph], Sridhar Ratnakumar [aut], Trent Mick [aut], ActiveState [cph] (R/appdir.r, R/cache.r, R/data.r, R/log.r translated from appdirs), Eddy Petrisor [ctb], Trevor Davis [trl, aut], Gabor Csardi [ctb], Gregory Jefferis [ctb]",
       "Maintainer": "Hadley Wickham <hadley@rstudio.com>",
-      "Repository": "https://packagemanager.posit.co/cran/__linux__/noble/latest"
+      "Repository": "RSPM"
     },
     "readr": {
       "Package": "readr",
@@ -6018,7 +6019,7 @@
       "NeedsCompilation": "yes",
       "Author": "Lionel Henry [aut, cre], Hadley Wickham [aut], mikefc [cph] (Hash implementation based on Mike's xxhashlite), Yann Collet [cph] (Author of the embedded xxHash library), Posit, PBC [cph, fnd]",
       "Maintainer": "Lionel Henry <lionel@posit.co>",
-      "Repository": "https://packagemanager.posit.co/cran/__linux__/noble/latest"
+      "Repository": "RSPM"
     },
     "rmarkdown": {
       "Package": "rmarkdown",
@@ -6074,7 +6075,7 @@
       "NeedsCompilation": "no",
       "Author": "JJ Allaire [aut], Yihui Xie [aut, cre] (<https://orcid.org/0000-0003-0645-5666>), Christophe Dervieux [aut] (<https://orcid.org/0000-0003-4474-2498>), Jonathan McPherson [aut], Javier Luraschi [aut], Kevin Ushey [aut], Aron Atkins [aut], Hadley Wickham [aut], Joe Cheng [aut], Winston Chang [aut], Richard Iannone [aut] (<https://orcid.org/0000-0003-3925-190X>), Andrew Dunning [ctb] (<https://orcid.org/0000-0003-0464-5036>), Atsushi Yasumoto [ctb, cph] (<https://orcid.org/0000-0002-8335-495X>, Number sections Lua filter), Barret Schloerke [ctb], Carson Sievert [ctb] (<https://orcid.org/0000-0002-4958-2844>), Devon Ryan [ctb] (<https://orcid.org/0000-0002-8549-0971>), Frederik Aust [ctb] (<https://orcid.org/0000-0003-4900-788X>), Jeff Allen [ctb], JooYoung Seo [ctb] (<https://orcid.org/0000-0002-4064-6012>), Malcolm Barrett [ctb], Rob Hyndman [ctb], Romain Lesur [ctb], Roy Storey [ctb], Ruben Arslan [ctb], Sergio Oller [ctb], Posit Software, PBC [cph, fnd], jQuery UI contributors [ctb, cph] (jQuery UI library; authors listed in inst/rmd/h/jqueryui/AUTHORS.txt), Mark Otto [ctb] (Bootstrap library), Jacob Thornton [ctb] (Bootstrap library), Bootstrap contributors [ctb] (Bootstrap library), Twitter, Inc [cph] (Bootstrap library), Alexander Farkas [ctb, cph] (html5shiv library), Scott Jehl [ctb, cph] (Respond.js library), Ivan Sagalaev [ctb, cph] (highlight.js library), Greg Franko [ctb, cph] (tocify library), John MacFarlane [ctb, cph] (Pandoc templates), Google, Inc. [ctb, cph] (ioslides library), Dave Raggett [ctb] (slidy library), W3C [cph] (slidy library), Dave Gandy [ctb, cph] (Font-Awesome), Ben Sperry [ctb] (Ionicons), Drifty [cph] (Ionicons), Aidan Lister [ctb, cph] (jQuery StickyTabs), Benct Philip Jonsson [ctb, cph] (pagebreak Lua filter), Albert Krewinkel [ctb, cph] (pagebreak Lua filter)",
       "Maintainer": "Yihui Xie <xie@yihui.name>",
-      "Repository": "https://packagemanager.posit.co/cran/__linux__/noble/latest"
+      "Repository": "RSPM"
     },
     "rms": {
       "Package": "rms",
@@ -6374,7 +6375,7 @@
       "NeedsCompilation": "yes",
       "Author": "Joe Cheng [aut], Timothy Mastny [aut], Richard Iannone [aut] (<https://orcid.org/0000-0003-3925-190X>), Barret Schloerke [aut] (<https://orcid.org/0000-0001-9986-114X>), Carson Sievert [aut, cre] (<https://orcid.org/0000-0002-4958-2844>), Christophe Dervieux [ctb] (<https://orcid.org/0000-0003-4474-2498>), RStudio [cph, fnd], Sass Open Source Foundation [ctb, cph] (LibSass library), Greter Marcel [ctb, cph] (LibSass library), Mifsud Michael [ctb, cph] (LibSass library), Hampton Catlin [ctb, cph] (LibSass library), Natalie Weizenbaum [ctb, cph] (LibSass library), Chris Eppstein [ctb, cph] (LibSass library), Adams Joseph [ctb, cph] (json.cpp), Trifunovic Nemanja [ctb, cph] (utf8.h)",
       "Maintainer": "Carson Sievert <carson@rstudio.com>",
-      "Repository": "https://packagemanager.posit.co/cran/__linux__/noble/latest"
+      "Repository": "RSPM"
     },
     "scales": {
       "Package": "scales",
@@ -6686,7 +6687,7 @@
       "Author": "Marek Gagolewski [aut, cre, cph] (<https://orcid.org/0000-0003-0637-6028>), Bartek Tartanus [ctb], Unicode, Inc. and others [ctb] (ICU4C source code, Unicode Character Database)",
       "Maintainer": "Marek Gagolewski <marek@gagolewski.com>",
       "License_is_FOSS": "yes",
-      "Repository": "https://packagemanager.posit.co/cran/__linux__/noble/latest"
+      "Repository": "RSPM"
     },
     "stringr": {
       "Package": "stringr",
@@ -6730,7 +6731,7 @@
       "NeedsCompilation": "no",
       "Author": "Hadley Wickham [aut, cre, cph], Posit Software, PBC [cph, fnd]",
       "Maintainer": "Hadley Wickham <hadley@posit.co>",
-      "Repository": "https://packagemanager.posit.co/cran/__linux__/noble/latest"
+      "Repository": "RSPM"
     },
     "survival": {
       "Package": "survival",
@@ -7052,7 +7053,7 @@
       "NeedsCompilation": "no",
       "Author": "Yihui Xie [aut, cre, cph] (<https://orcid.org/0000-0003-0645-5666>), Posit Software, PBC [cph, fnd], Christophe Dervieux [ctb] (<https://orcid.org/0000-0003-4474-2498>), Devon Ryan [ctb] (<https://orcid.org/0000-0002-8549-0971>), Ethan Heinzen [ctb], Fernando Cagua [ctb]",
       "Maintainer": "Yihui Xie <xie@yihui.name>",
-      "Repository": "https://packagemanager.posit.co/cran/__linux__/noble/latest"
+      "Repository": "RSPM"
     },
     "treeshap": {
       "Package": "treeshap",
@@ -7264,7 +7265,7 @@
       "NeedsCompilation": "yes",
       "Author": "Hadley Wickham [aut], Lionel Henry [aut], Davis Vaughan [aut, cre], data.table team [cph] (Radix sort based on data.table's forder() and their contribution to R's order()), Posit Software, PBC [cph, fnd]",
       "Maintainer": "Davis Vaughan <davis@posit.co>",
-      "Repository": "https://packagemanager.posit.co/cran/__linux__/noble/latest"
+      "Repository": "RSPM"
     },
     "vip": {
       "Package": "vip",
@@ -7846,7 +7847,7 @@
       "URL": "https://github.com/vubiostat/r-yaml/",
       "BugReports": "https://github.com/vubiostat/r-yaml/issues",
       "NeedsCompilation": "yes",
-      "Repository": "https://packagemanager.posit.co/cran/__linux__/noble/latest",
+      "Repository": "RSPM",
       "Encoding": "UTF-8"
     },
     "yardstick": {

@@ -1,0 +1,176 @@
+---
+title: "Boosting"
+author: "Chris Kennedy"
+date: "2025-08-28"
+format:
+  html:
+    toc: true
+    toc_depth: 3
+    toc_float: yes
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Load packages
+
+```{r load_packages}
+suppressMessages({ # hide unnecessary messages when loading these.
+  library(caret)
+  library(pROC)
+  library(xgboost)
+})
+```
+
+## Load data
+
+```{r setup_data}
+# Created in clean-dataset.Rmd
+load(here::here("data/clean-dataset.RData"))
+```
+
+## Overview
+
+From [Freund Y, Schapire RE. 1999. A short introduction to boosting. Journal of Japanese Society for Artificial Intelligence 14:771-780](https://cseweb.ucsd.edu/~yfreund/papers/IntroToBoosting.pdf):
+
+"Boosting is a general method for improving the accuracy of any given learning algorithm" and evolved from AdaBoost and PAC learning (p. 1-2). Gradient boosted machines are averages of "weak" trees that are just slightly more accurate than random guessing. These are then "boosted" into "strong" learners. That is, the models don't have to be accurate over the entire feature space."
+
+The model first tries to predict each value in a dataset - the cases that can be predicted easily are *downweighted* so that the algorithm does not try as hard to predict them.\
+However, the cases that the model has difficulty predicting are *upweighted* so that the model more assertively tries to predict them. This continues for multiple "boosting iterations", with a training-based performance measure produced at each iteration. This method can drive down generalization error (p. 5).
+
+![Boosting diagram](../images/boosting-diagram.png)
+
+Image credit: <https://www.nb-data.com/p/comparing-model-ensembling-bagging>
+
+## Fitting an XGBoost model
+
+Rather than testing only a single model at a time, it is useful to tune the parameters of that single model against multiple versions.
+
+### Define evaluation strategy
+
+```{r caret_prep}
+# Use cross-validation as our evaluation procedure (instead of the default "bootstrap")
+cv_control =
+  caret::trainControl(method = "repeatedcv",
+                      # Number of folds; usually this would be 5-10.
+                      number = 2L,
+                      # Number of complete sets of folds to compute; often 2-5
+                      repeats = 1L,
+                      # We always want class probabilities for a binary outcome
+                      classProbs = TRUE,
+                      # Indicate that our response variable is binary
+                      summaryFunction = twoClassSummary) 
+```
+
+### Define grid of configurations to test
+
+```{r}
+# Ask caret what hyperparameters can be tuned for the xgbTree algorithm.
+modelLookup("xgbTree")
+
+# More details at https://xgboost.readthedocs.io/en/latest/parameter.html
+(xgb_grid = expand.grid(
+  # Number of trees to fit, aka boosting iterations
+  # nrounds = c(100, 300, 500, 700, 900),
+  nrounds = c(5, 20), # Fast but inaccurate version.
+  # Depth of the decision tree (how many levels of splits).
+	max_depth = c(1, 3), 
+  # Learning rate: lower means the ensemble will adapt more slowly.
+	eta = c(0.1, 0.2),
+  # Make this larger and xgboost will tend to make smaller trees
+  gamma = 0,
+  colsample_bytree = 1.0,
+  subsample = 1.0,
+  # Stop splitting a tree if we only have this many obs in a tree node.
+	min_child_weight = 4L))
+
+# Other hyperparameters: gamma, column sampling, row sampling
+
+# How many combinations of settings do we end up with?
+nrow(xgb_grid)
+```
+
+## Fit model
+
+Note that we will now use *A*rea *U*nder the ROC *C*urve (called "AUC") as our performance metric, which relates the number of true positives (sensitivity) to the number of true negatives (specificity). More in the next lesson.
+
+```{r xgb_fit}
+set.seed(1)
+
+df2 = na.omit(df)
+df2$depression = factor(df2[[outcome]], labels = c("no", "yes"))
+#df2 = df
+
+model =
+  caret::train(
+    depression ~ .,
+    data = df2[, c(outcome, predictors)],
+    # Use xgboost's tree-based algorithm (i.e. gbm)
+    method = "xgbTree",
+    # Use "AUC" as our performance metric, which caret incorrectly calls "ROC"
+    metric = "ROC",
+    # Specify our cross-validation settings
+    trControl = cv_control,
+    # Test multiple configurations of the xgboost algorithm
+    tuneGrid = xgb_grid,
+    # Hide detailed output (setting to TRUE will print that output)
+    verbose = FALSE)
+
+# See how long this algorithm took to complete (from ?proc.time)
+# user time = the CPU time charged for the execution of user instructions of the calling process
+# system time = the CPU time charged for execution by the system on behalf of the calling  process
+# elapsed time = real time since the process was started
+model$times 
+```
+
+## Review model result
+
+```{r review_model}
+model
+
+# Extract the hyperparameters with the best performance
+model$bestTune
+
+ggplot(model) + theme_minimal() + ggtitle("Xgboost hyperparameter comparison") 
+```
+
+## Investigate Results
+
+```{r}
+# Show variable importance (text).
+caret::varImp(model)
+
+# This version uses the complex caret object
+vip::vip(model) + theme_minimal()
+
+# This version operates on the xgboost model within the caret object
+vip::vip(model$finalModel) + theme_minimal()
+
+# Xgboost does not predict with missing values via caret.
+df_test2 = na.omit(df_test)
+
+# Generate predicted labels.
+predicted_labels = predict(model, df_test2)
+table(df_test2$depression, predicted_labels)
+
+# Generate predicted probabilities - better.
+pred_probs = predict(model, df_test2, type = "prob")
+
+# Some dichotomized performance statistics - more to come in the next section.
+(cm = confusionMatrix(predicted_labels, factor(df_test2$depression, labels = c("no", "yes"))))
+
+```
+
+[Wikipedia has some helpful tables](https://en.wikipedia.org/wiki/Confusion_matrix#Table_of_confusion) to remind you of various dichotomized metrics.
+
+## Save results
+
+```{r save_results}
+save(model, df_test2, pred_probs,
+     file = here::here("data/boosting.RData"))
+```
+
+## Challenges
+
+Review the help page for `caret::train` and modify a few hyperparameters. Does performance change?

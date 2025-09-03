@@ -9,3 +9,5 @@
 *.RData
 *_cache*
 *.html
+
+*_files/

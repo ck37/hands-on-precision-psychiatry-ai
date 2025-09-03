@@ -1,0 +1,185 @@
+---
+title: "Random forests"
+author: "Chris Kennedy"
+date: "2025-08-27"
+format:
+  html:
+    toc: true
+    toc_depth: 3
+    toc_float: yes
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Load packages
+
+```{r load_packages}
+suppressMessages({ # hide unnecessary messages when loading these.
+library(ranger) # our random forest package of choice
+library(vip) # variable importance plots for various algorithms
+library(ggplot2) # in python, use plotnine
+})
+```
+
+## Load data
+
+```{r load_data}
+# Created in clean-dataset.Rmd
+load(here::here("data/clean-dataset.RData"))
+```
+
+## First, a tree
+
+Let's predict depression among college students.
+
+```{r tree}
+set.seed(3)
+# We skip city and degree for now purely for aesthetics.
+tree = rpart::rpart(depression ~ ., data = df[, c(outcome, setdiff(predictors, c("city", "degree")))])
+rpart.plot::rpart.plot(tree) 
+```
+
+This tree was created by dividing up the dataset into smaller and smaller subgroups, based on the variable and split value that maximizes AUC (i.e. separates the 0s from the 1s most consistently). We'll get into more detail on AUC later.
+
+## Now, random forests
+
+The random forest algorithm seeks to improve on the performance of a single decision tree by taking the average of many trees. Thus, a random forest can be viewed as an **ensemble** method, or model averaging approach. The algorithm was invented by UC Berkeley's own Leo Breiman in 2001, who was also a co-creator of decision trees (see his [1984 CART book](https://www.amazon.com/Classification-Regression-Wadsworth-Statistics-Probability/dp/0412048418)).
+
+Random forests are an extension of **bagging**, in which multiple samples of the original data are drawn with replacement (aka "bootstrap samples"). 1996 vs 2001 RF. 1997 random subspace. An algorithm is fit separately to each sample, then the average of those estimates is used for prediction. While bagging can be used with any base algorithm, random forest uses decision trees as its base learner.
+
+![Bagging diagram](../images/bagging-diagram.png)
+
+Random forests add another level of randomness by also randomly sampling the features (or covariates) at each split in each decision tree. This makes the decision trees use different covariates and therefore be more unique. As a result, the average of these trees tends to be more accurate overall.
+
+Image credit: <https://www.nb-data.com/p/comparing-model-ensembling-bagging>
+
+## Fit model
+
+Fit a random forest model that predicts the number of people with heart disease using the other variables as our X predictors. If our Y variable is a factor, `ranger` will by default perform classification; if it is numeric/integer regression will be performed and if it is omitted it will run an unsupervised analysis.
+
+```{r rf_fit}
+# Examine the settings we could specify
+# ?ranger::ranger
+
+# Set our seed for reproducibility
+set.seed(1)
+
+# Fit the random forest
+(rf1 =
+    ranger::ranger(y = factor(df[[outcome]]),    # Outcome variable (vector)
+                   x = df[, predictors], # Predictor dataframe
+                   # Number of trees
+                   num.trees = 500, 
+                   # Number of variables randomly sampled as candidates at each split.
+                   mtry = 5,  
+                   # Grow a probability forest?
+                   probability = TRUE,
+                   # This is the default, but we can increase it potentially.
+                   num.threads = 2L,
+                   # We want the importance of predictors to be assessed.
+                   importance = "permutation"))
+```
+
+The "OOB estimate of error rate" shows us how accurate our model is. Brier score is equivalent to mean-squared error, which is `(actual value - predicted probability)^2` averaged over all observations. OOB stands for "out of bag" - and bag is short for "bootstrap aggregation". So OOB estimates performance by comparing the predicted outcome value to the actual value across all trees using only the observations that were not part of the training data for that tree. An automatic test set of sorts.
+
+Random Forest estimates variable importance by separately examining each variable and estimating how much the model's accuracy drops when that variable's values are randomly shuffled (permuted). The shuffling temporarily removes any relationship between that covariate's value and the outcome. If a variable is important then the model's accuracy will suffer a large drop when it is randomly shuffled. But if the model's accuracy doesn't change it means the variable is not important to the model - e.g. maybe it was never even chosen as a split in any of the decision trees.
+
+## Investigate Results
+
+```{r rf_varimp_plot}
+# Variable importance plot
+vip::vip(rf1) + theme_minimal()
+
+# Underlying variable importance data used to generate plot.
+vip::vi(rf1)
+
+# Looking at the raw splits for a single tree.
+treeInfo(rf1, 1)
+```
+
+## Performance plateau
+
+```{r convergence}
+library(mlr)
+library(OOBCurve)
+
+# This is setting a seed using a random number generator that works even
+# when using multiple threads via parallel processing.
+set.seed(1, "L'Ecuyer-CMRG")
+
+# mlr wants covariates and outcome to be in the same dataframe.
+# Skip id variable.
+oob_df = df[, c(outcome, predictors)]
+
+# Outcome needs to be a factor, for later OOBCurve analysis.
+oob_df[[outcome]] = as.factor(oob_df[[outcome]])
+
+mlr_task = makeClassifTask(data = oob_df, target = outcome)
+
+# Current package has a bug such that multiple measures have to be specified.
+# We aren't using the Brier score though.
+# TODO: these results could be averaged over multiple random shufflings
+# of the tree ordering. Would give a more accurate, smoother curve.
+# This takes ~10 seconds.
+
+mlr_learner = makeLearner("classif.ranger", keep.inbag = TRUE, par.vals = list(num.trees = 4000))
+(mlr_rf = train(mlr_learner, mlr_task))
+
+system.time({
+  results = OOBCurve(mlr_rf,
+                     measures = list(mlr::auc), task = mlr_task,
+                     data = oob_df)
+})
+
+```
+
+### Interpret
+
+```{r rf_interpret}
+# Look at the OOB AUC with the maximum number of trees.
+(rf_auc = results$auc[length(results$auc)])
+
+# Can zoom in to certain segments of the forest indexed by an ntree range.
+tree_start = 1
+tree_end = length(results$auc)
+x_span = seq(tree_start, tree_end)
+y_span = results$auc[x_span]
+
+ggplot(mapping = aes(x = x_span, y = y_span)) + geom_line() + theme_minimal() +
+  coord_fixed(ratio = 3) + 
+  scale_y_continuous(expand = c(0, 0), limits = c(0.45, 1)) +
+  scale_x_log10(breaks = c(3, 10, 30, 100, 300, 1000, 3000),
+                limits = c(1, 4000),
+                minor_breaks = NULL) +
+  labs(x = "Trees in the random forest", y = "Out of Bag AUC")
+
+```
+
+## Save results
+
+```{r save_results}
+save(rf1, mlr_rf,
+     file = here::here("data/random-forest.RData"))
+```
+
+## Challenges
+
+1.  Review the help page for ranger and identify at least two hyperparameters you want to change. Modify them, re-run, and see how things look. Any impact on performance?
+
+2.  If you have extra time, install.packages("tuneRanger"), review the help page(s), and determine the optimal hyperparameter settings for this dataset.
+
+3.  If you have even more time, skim some of the readings below.
+
+## Reading
+
+Breiman, Leo. 2001. "Random Forests." Machine Learning 45 (1). Springer: 5–32.
+
+Hands-On Machine Learning, Random Forest chapter. <https://bradleyboehmke.github.io/HOML/random-forest.html>
+
+Probst, Philipp, Marvin N Wright, and Anne-Laure Boulesteix. 2019. "Hyperparameters and Tuning Strategies for Random Forest." Wiley Interdisciplinary Reviews: Data Mining and Knowledge Discovery. Wiley Online Library, e1301.
+
+Wright, Marvin, and Andreas Ziegler. 2017. "Ranger: A Fast Implementation of Random Forests for High Dimensional Data in C++ and R." Journal of Statistical Software, Articles 77 (1): 1–17. <https://doi.org/10.18637/jss.v077.i01>.
+
+Geurts, Pierre, Damien Ernst, and Louis Wehenkel. 2006. "Extremely Randomized Trees." Machine Learning 63 (1). Springer: 3–42.
