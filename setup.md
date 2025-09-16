@@ -8,8 +8,10 @@ For those interested, we will also go through the steps together this Friday (Se
 
 [Download and install Positron](https://positron.posit.co/install.html)
 
--   <img src="images/positron-extensions.png" width="40"/> Open up Positron, click the Extensions tab on the left, search for "Cline", and install the Cline extension created by the Cline organization (1M+ downloads) Image
+-   <img src="images/positron-extensions.png" width="40"/> Open up Positron, click the Extensions tab on the left, search for "Cline", and install the Cline extension created by the Cline organization's "saoudrizwan" developer (1M+ downloads)
 -   <img src="images/positron-cline.png" width="40"/> Click the new Cline tile on the left, click "get started for free", make a free account with Cline, and select the free "grok-code-fast-1" model.
+
+To learn more, try this [Positron Youtube demo by Julia Silge](https://www.youtube.com/watch?v=aKSrptGegeo), or [review these docs](https://positron.posit.co/features.html).
 
 ## R
 
