@@ -1,11 +1,8 @@
-# Installation
+These are brief setup steps for the workshop.
 
-## R
+If you're able to get Positron and Cline working correctly, you can use Cline to debug other errors you experience or just do the installation for you (e.g. tell Cline: "install lm studio").
 
--   Go to <https://cloud.r-project.org> and select the appropriate "Download R for \[your OS\]" link
-    -   For Macs: select the .pkg file based on if your CPU is "Apple Silicon" (M1, M2, etc.) or Intel, then install that.
-    -   Hint: On MacOS, you can select Apple -\> About this Mac to find your CPU chip.
-    -   For Windows: click the "Install R for the first time" link, then "Download R-\[version\] for Windows", then install that.
+For those interested, we will also go through the steps together this Friday (Sep. 19) at either noon or 1pm EDT.
 
 ## Positron
 
@@ -14,6 +11,13 @@
 -   <img src="images/positron-extensions.png" width="40"/> Open up Positron, click the Extensions tab on the left, search for "Cline", and install the Cline extension created by the Cline organization (1M+ downloads) Image
 -   <img src="images/positron-cline.png" width="40"/> Click the new Cline tile on the left, click "get started for free", make a free account with Cline, and select the free "grok-code-fast-1" model.
 
+## R
+
+-   Go to <https://cloud.r-project.org> and select the appropriate "Download R for \[your OS\]" link
+    -   For Macs: select the .pkg file based on if your CPU is "Apple Silicon" (M1, M2, etc.) or Intel, then install that.
+    -   Hint: On MacOS, you can select Apple -\> About this Mac to find your CPU chip.
+    -   For Windows: click the "Install R for the first time" link, then "Download R-\[version\] for Windows", then install that.
+
 ## LM Studio
 
 Download and install [LM Studio](https://lmstudio.ai/)
@@ -21,6 +25,14 @@ Download and install [LM Studio](https://lmstudio.ai/)
 -   Once installed, select "power user" or "developer" mode, click the Discover button on the left, and see if you can download these models:
     -   Gemma 3n E4B
     -   Qwen 4B Thinking 2507
+
+## Python
+
+If you don't already use python for data science, download [miniforge](https://conda-forge.org/download/). On MacOS you'll need to select the correct version for your CPU, as in the R step above.
+
+  - On MacOS: open your Terminal (Applications -> Utilities -> Terminal)
+    - Move into your Downloads folder: `cd Downloads`
+    - Run the installer: `bash Miniforge3-$(uname)-$(uname -m).sh`
 
 ## Optional
 
