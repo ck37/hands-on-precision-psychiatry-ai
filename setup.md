@@ -26,7 +26,7 @@ Download and install [LM Studio](https://lmstudio.ai/)
 
 -   Once installed, select "power user" or "developer" mode, click the Discover button on the left, and see if you can download these models:
     -   Gemma 3n E4B
-    -   Qwen 4B Thinking 2507
+    -   Qwen3 4B Thinking 2507
 
 ## Python
 
