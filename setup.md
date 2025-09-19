@@ -58,4 +58,4 @@ Make an account on <https://claude.ai> if you don't already have one, and consid
 ### OS package manager
 
 -   If you're on MacOS, install [Homebrew](https://brew.sh/).
--   If you're on Windows, install [Chocolatey](https://chocolatey.org/install).
+-   If you're on Windows, install [WinGet](https://learn.microsoft.com/en-us/windows/package-manager/winget/#install-winget) or [Chocolatey](https://chocolatey.org/install).
