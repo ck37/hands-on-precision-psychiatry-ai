@@ -45,6 +45,8 @@ These steps are not essential but would be good to do if you want to maximize yo
 
 Make a free account on <https://github.com> if you don't already have one, and login.
 
+  - Ideally: [setup SSH keys between your computer and GitHub](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/checking-for-existing-ssh-keys).
+
 ### OpenRouter
 
 Make a free account on <https://openrouter.ai> if you don't already have one, and login.
