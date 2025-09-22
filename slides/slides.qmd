@@ -4,23 +4,11 @@ author: "Chris Kennedy and Pratik Khadse"
 date: "Sep. 23, 2025 (updated: `r Sys.Date()`)"
 format:
   revealjs:
-    scroll-view: true
-    #xaringan::moon_reader:
-    #css: ["scrollable.css", "mtheme_max.css", "fonts_mtheme_max.css"]
-    self_contained: false
-    #lib_dir: libs
-    #chakra: libs/remark-latest.min.js
-    #nature:
-    #  ratio: '16:9'
-    #  highlightStyle: github
-    #  highlightLines: true
-    #  countIncrementalSlides: false
-    #  slideNumberFormat: |
-    #    <div class="progress-bar-container">
-    #      <div class="progress-bar" style="width: calc(%current% / %total% * 100%);">
-    #      </div>
-    #    </div>`
-    #seal: false   
+    theme: default
+    slide-number: true
+    chalkboard:
+      buttons: false
+    preview-links: auto   
 ---
 
 ```{r setup, include=FALSE, cache=FALSE}
@@ -50,18 +38,14 @@ thm <- theme_bw() +
 theme_set(thm)
 ```
 
-class: title-slide   
 <a href="https://github.com/ck37/hands-on-precision-psychiatry-ai"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png" alt="Fork me on GitHub"></a>
 
 <br><br><br><br>
-# .font130[Hands-On to Machine Learning in R]
 
 ### Chris Kennedy and Pratik Khadse
 ### Sep. 23, 2025
 
 ---
-
-class: center, middle, inverse
 
 # "It’s tough to make predictions, especially about the future." -Yogi Berra
 
@@ -186,8 +170,6 @@ A model that performs well on the training dataset but poorly on the test datase
 **Common performance metrics**: Accuracy, Mean squared error, Sensitivity and specificity, Area under the ROC curve (AUC)  
 
 ---
-
-class: left
 
 # Workshop goals
 
