@@ -3,12 +3,18 @@
 .RData
 .Ruserdata
 
+.DS_Store
+
 
 *.png
 *.csv
 *.RData
 *_cache*
 *.html
+# Allow slides HTML
+!slides/slides.html
 
 *_files/
+# Allow slides support files
+!slides/slides_files/
 *.json
