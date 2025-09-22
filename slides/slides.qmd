@@ -45,29 +45,25 @@ theme_set(thm)
 
 <br><br><br><br>
 
-### Chris Kennedy and Pratik Khadse
-### Sep. 23, 2025
+#### Chris Kennedy and Pratik Khadse
+#### Sep. 23, 2025
 
----
 
-# "It’s tough to make predictions, especially about the future." -Yogi Berra
+## "It’s tough to make predictions, especially about the future." -Yogi Berra
 
----
 
-# Resources
+## Resources
 _An Introduction to Statistical Learning - with Applications in R (2013)_ by Gareth James, Daniela Witten, Trevor Hastie, Robert Tibshirani. Springer: New York. [Amazon](https://www.amazon.com/Introduction-Statistical-Learning-Applications-Statistics/dp/1461471370) or [free PDF](http://www-bcf.usc.edu/~gareth/ISL/). We encourage you to support the authors by purchasing their textbook!  
 
 [Also check out the many resources](https://github.com/dlab-berkeley/MachineLearningWG) outlined in D-Lab's Machine Learning Working Group repository. 
 
----
 
-# Software requirements
+## Software requirements
 
 [See setup.md](https://github.com/ck37/hands-on-precision-psychiatry-ai/blob/main/setup.md)
 
----
 
-# Download materials
+## Download materials
 
 [Click here to download the Introduction to Machine Learning in R workshop materials](https://github.com/ck37/hands-on-precision-psychiatry-ai)
   * Click green “Clone or Download” button
@@ -79,9 +75,8 @@ Or (advanced):
   * Run `git clone [URL]` in the Terminal in the folder you want it to live in.
   * In Positron select File -> Open Folder
 
----
 
-# Install required R packages 
+## Install required R packages 
 
 This workshop will utilize a variety of packages to install and organize the code, fit the machine learning algorithms, visualize their outputs, and evaluate their performances. 
 
@@ -97,9 +92,8 @@ Run `renv::restore()` to install these.
 
 * Miscellaneous: "pROC", "rio"  
 
----
 
-# Machine learning defined
+## Machine learning defined
 
 Machine learning evolved from scientific pursuits in statistics, computer science, information theory, artificial intelligence, and pattern recognition.  
 
@@ -108,9 +102,8 @@ How to define machine learning?
 2) **Practically:** sets of tools for investigating/modeling/understanding data.  
 3)  **Specifically:** (see below)
 
----
 
-# Brief history of machine learning
+## Brief history of machine learning
 
 The importance of statistics:  
 - [Welling's commentary](https://www.ics.uci.edu/~welling/publications/papers/WhyMLneedsStatistics.pdf)  
@@ -120,9 +113,8 @@ The importance of statistics:
 Seek "actionable insight":  
 - [Actionable insight](https://www.techopedia.com/definition/31721/actionable-insight)  
 
----
 
-# Supervised machine learning
+## Supervised machine learning
 
 Selecting a machine learning algorithm depends on the characteristics of the problem being investigated - there is no "best" method applicable to all cases. Machine learning is generally divided into three broad classes of learning: [supervised](https://en.wikipedia.org/wiki/Supervised_learning), [unsupervised](https://en.wikipedia.org/wiki/Unsupervised_learning), and [reinforcement](https://en.wikipedia.org/wiki/Reinforcement_learning).  
 
@@ -137,32 +129,28 @@ $x$ are the independent/input/predictor/feature/covariate variables
 
 Supervised machine learning methods learn a target function $f$ that best maps $x$ to $y$ based on a set of [training data](https://en.wikipedia.org/wiki/Training,_validation,_and_test_sets#Training_dataset). 
 
----
 
-# Supervised machine learning
+## Supervised machine learning
 
 Our function would look like this: $y = f(x) + \epsilon$ where $f$ is some function that relates our $x$ predictor variables to $y$ in an unknown way thus we must estimate it. Epsilon $\epsilon$ is the random error, is independent of $x$ and averages to zero. Therefore, we can predict $y$ using $\hat{y} = \hat{f}(x)$ for new data (the [test dataset](https://en.wikipedia.org/wiki/Training,_validation,_and_test_sets#Test_dataset)) and evaluate how well the algorithm learned the target function when introduced to new data.  
 
 **How to define machine learning, specifically? (revisited)**  
 More specifically, we can think of machine learning as a bunch of methods to estimate $f$!  
 
----
 
-# Classification or regression?
+## Classification or regression?
 
 **Classification** is used when the $y$ outcome variable is categorical/discrete. Binary examples generally refer to a yes/no situation where a 1 is prediction of the "yes" category and 0 as the "no". Classification models the probability that the outcome variable is 1 based on the covariates: $Pr(y = 1 | x)$. This can be extended to multi-level classification as well.  
 
 **Regression** is used when the target $y$ outcome variable is continuous. Regression models the conditional expectation (conditional mean) of the outcome variable given the covariates: $E(y | x)$.  
 
----
 
-# Data preprocessing
+## Data preprocessing
 
 A longstanding first step is to split a dataset into **"training"** and **"test"** subsets. A training sample usually consists of a majority of the original dataset so that an algorithm can learn the model. The remaining portion of the dataset is designated to the test sample to evaluate model performance on data the model has not yet seen. **Clean, subset, and handle missing data if necessary** before the splitting process commences.  
 
----
 
-# Model performance
+## Model performance
 
 **Performance metrics** are used to see how well a model predicts a specified outcome on training and test datasets.  
 
@@ -172,44 +160,40 @@ A model that performs well on the training dataset but poorly on the test datase
 
 **Common performance metrics**: Accuracy, Mean squared error, Sensitivity and specificity, Area under the ROC curve (AUC)  
 
----
 
-# Workshop goals
+## Workshop goals
 
-### 1) Learn the basics of using three supervised machine learning algorithms in R:  
+#### 1) Learn the basics of using three supervised machine learning algorithms in R:  
 
 - Random forest  
 - Boosting  
 - SuperLearner  
   
-### 2) Vizualize important information:  
+#### 2) Vizualize important information:  
 - Random forest variable importance  
 - AUC from different boosting models  
 - SuperLearner cross-validated risk   
 
----
 
-# Workshop goals
+## Workshop goals
 
-### 3) Examine the performance of these models  
+#### 3) Examine the performance of these models  
 * AUC
 * Cross-validated risk
 * Calibration
 * Net benefit
 
-### 4) Simultaneously compare multiple algorithms in an ensemble  
+#### 4) Simultaneously compare multiple algorithms in an ensemble  
 * Compare various tunings of multiple algorithms at once
 * Weighted ensemble average
 
----
 
-# Data preprocessing
+## Data preprocessing
 
 A first task will be to prep the data. We don't have time to focus on this, so we just need to "Preview" the `00-clean-dataset.Qmd` notebook.
 
----
 
-# Decision trees
+## Decision trees
 
 Decision trees are a standard alternative to linear regression and make no assumptions about the data; they split the data into smaller and smaller subgrioups of $x$ covariates in terms of $y$ and split on each predictor. How does it work? 
 
@@ -221,17 +205,15 @@ To determine the top split ("root node"), the model looks at all cutpoints to se
 
 Breiman et al's book [Classification and Regression Trees (1984)](https://www.amazon.com/Classification-Regression-Wadsworth-Statistics-Probability/dp/0412048418) is a must read for learning more about decision trees. 
 
----
 
-# Decision trees
+## Decision trees
 
 .center[![](slides_img/dt.jpg)]
 
-### Open "01-random-forests.qmd" to work through the decision tree examples. 
+#### Open "01-random-forests.qmd" to work through the decision tree examples. 
 
----
 
-# Random forest
+## Random forest
 
 The random forest algorithm seeks to improve on the performance of a single decision tree by taking the average of many trees. Thus, a random forest can be viewed as an **ensemble** method, or model averaging approach.  
 
@@ -243,9 +225,8 @@ Random forests are
 Leo Breiman also wrote the seminal paper on random forests:  
 [Breiman L. 2001. Random forests. Machine learning 45:5–32](https://stat.berkeley.edu/~breiman/randomforest2001.pdf)
 
----
 
-# Random forest 
+## Random forest 
 
 .pull-left[
 .center[![](slides_img/pexels-free-forest.png)]
@@ -255,11 +236,10 @@ Leo Breiman also wrote the seminal paper on random forests:
 .center[![](slides_img/med-rf.png)]
 ]
 
-### Open "01-random-forest.qmd" to work through the random forest examples.
+#### Open "01-random-forest.qmd" to work through the random forest examples.
 
----
 
-# XGBoost
+## XGBoost
 
 Boosting takes this ensemble idea a step further! The XGBoost algorithm takes a bunch of weak trees and "boosts" them into strong trees. This algorithm downweights cases it can easily predict but upweights the cases it has trouble predicting. 
 
@@ -268,9 +248,8 @@ This is not teleological though, as boosting fits a forest of trees sequentially
 - `caret::expand.grid` for creating a grid search of hyperparameters to tune, allowing us to fit multiple combinations of the algoritihm simultaneously. 
 - *A*rea *U*nder the Receiver Operating Characteristic *C*urve (AUC) as a performance metric.  
 
----
 
-# XGBoost
+## XGBoost
 
 .pull-left[
 .center[![](slides_img/xgb-cvhyper.png)]
@@ -280,11 +259,10 @@ This is not teleological though, as boosting fits a forest of trees sequentially
 .center[![Irony](slides_img/xgb-testAUC.png)]
 ]
 
-### Open "02-boosting.qmd" to work through the xgboost examples. 
+#### Open "02-boosting.qmd" to work through the xgboost examples. 
 
----
 
-# SuperLearner
+## SuperLearner
 
 The SuperLearner R package takes this idea of ensembling even further! Instead of ensembling only trees-based methods, we can simultaneously compare the cross-validated performance of multiple algorithms and/or a single algorithm with differently tuned hyperparameters. This is a generally advisable approach to machine learning instead of fitting single algorithms. 
 
@@ -296,9 +274,8 @@ Let's compare the algorithms you have previously fitted individually in this wor
 - **SL.glm_All:** logistic regression (`glm`); one of the most common algorithms across scientific disciplines. 
 - **SL.mean_All:** the mean of our Y response variable; this is the simplest algorithm and should perform the worst of all. 
 
----
 
-# SuperLearner
+## SuperLearner
 
 .pull-left[
 .center[![](slides_img/cvsl-risk.png)]
@@ -308,8 +285,7 @@ Let's compare the algorithms you have previously fitted individually in this wor
 .center[![Irony](slides_img/cvsl-auc.png)]
 ]
 
-### Open "05-ensembling.qmd" to work through the SuperLearner ensemble examples. 
+#### Open "05-ensembling.qmd" to work through the SuperLearner ensemble examples. 
 
----
 
 Thanks!

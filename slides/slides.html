@@ -146,49 +146,28 @@ Chris Kennedy and Pratik Khadse
 
 <p><a href="https://github.com/ck37/hands-on-precision-psychiatry-ai"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png" alt="Fork me on GitHub"></a></p>
 <p><br><br><br><br></p>
-<h3 id="chris-kennedy-and-pratik-khadse">Chris Kennedy and Pratik Khadse</h3>
-<h3 id="sep.-23-2025">Sep.&nbsp;23, 2025</h3>
+<h4 id="chris-kennedy-and-pratik-khadse">Chris Kennedy and Pratik Khadse</h4>
+<h4 id="sep.-23-2025">Sep.&nbsp;23, 2025</h4>
 </section>
-<section class="slide level2">
-
+<section id="its-tough-to-make-predictions-especially-about-the-future.--yogi-berra" class="slide level2">
+<h2>“It’s tough to make predictions, especially about the future.” -Yogi Berra</h2>
 </section>
-<section>
-<section id="its-tough-to-make-predictions-especially-about-the-future.--yogi-berra" class="title-slide slide level1 center">
-<h1>“It’s tough to make predictions, especially about the future.” -Yogi Berra</h1>
-
-</section>
-<section class="slide level2">
-
-</section></section>
-<section>
-<section id="resources" class="title-slide slide level1 center">
-<h1>Resources</h1>
+<section id="resources" class="slide level2">
+<h2>Resources</h2>
 <p><em>An Introduction to Statistical Learning - with Applications in R (2013)</em> by Gareth James, Daniela Witten, Trevor Hastie, Robert Tibshirani. Springer: New York. <a href="https://www.amazon.com/Introduction-Statistical-Learning-Applications-Statistics/dp/1461471370">Amazon</a> or <a href="http://www-bcf.usc.edu/~gareth/ISL/">free PDF</a>. We encourage you to support the authors by purchasing their textbook!</p>
 <p><a href="https://github.com/dlab-berkeley/MachineLearningWG">Also check out the many resources</a> outlined in D-Lab’s Machine Learning Working Group repository.</p>
 </section>
-<section class="slide level2">
-
-</section></section>
-<section>
-<section id="software-requirements" class="title-slide slide level1 center">
-<h1>Software requirements</h1>
+<section id="software-requirements" class="slide level2">
+<h2>Software requirements</h2>
 <p><a href="https://github.com/ck37/hands-on-precision-psychiatry-ai/blob/main/setup.md">See setup.md</a></p>
 </section>
-<section class="slide level2">
-
-</section></section>
-<section>
-<section id="download-materials" class="title-slide slide level1 center">
-<h1>Download materials</h1>
+<section id="download-materials" class="slide level2">
+<h2>Download materials</h2>
 <p><a href="https://github.com/ck37/hands-on-precision-psychiatry-ai">Click here to download the Introduction to Machine Learning in R workshop materials</a> * Click green “Clone or Download” button * Click “Download Zip” * Extract this zip file to your Dropbox / Box / etc. and open the folder in Postron (File -&gt; Open Folder)</p>
 <p>Or (advanced): * Copy the github clone URL (https or ideally the ssh version) * Run <code>git clone [URL]</code> in the Terminal in the folder you want it to live in. * In Positron select File -&gt; Open Folder</p>
 </section>
-<section class="slide level2">
-
-</section></section>
-<section>
-<section id="install-required-r-packages" class="title-slide slide level1 center">
-<h1>Install required R packages</h1>
+<section id="install-required-r-packages" class="slide level2">
+<h2>Install required R packages</h2>
 <p>This workshop will utilize a variety of packages to install and organize the code, fit the machine learning algorithms, visualize their outputs, and evaluate their performances.</p>
 <p>Run <code>renv::restore()</code> to install these.</p>
 <ul>
@@ -199,24 +178,16 @@ Chris Kennedy and Pratik Khadse
 <li><p>Miscellaneous: “pROC”, “rio”</p></li>
 </ul>
 </section>
-<section class="slide level2">
-
-</section></section>
-<section>
-<section id="machine-learning-defined" class="title-slide slide level1 center">
-<h1>Machine learning defined</h1>
+<section id="machine-learning-defined" class="slide level2">
+<h2>Machine learning defined</h2>
 <p>Machine learning evolved from scientific pursuits in statistics, computer science, information theory, artificial intelligence, and pattern recognition.</p>
 <p>How to define machine learning?<br>
 1) <strong>Generally:</strong> algorithms, computers, and other machines that can “learn” without direct input from a human programmer.<br>
 2) <strong>Practically:</strong> sets of tools for investigating/modeling/understanding data.<br>
 3) <strong>Specifically:</strong> (see below)</p>
 </section>
-<section class="slide level2">
-
-</section></section>
-<section>
-<section id="brief-history-of-machine-learning" class="title-slide slide level1 center">
-<h1>Brief history of machine learning</h1>
+<section id="brief-history-of-machine-learning" class="slide level2">
+<h2>Brief history of machine learning</h2>
 <p>The importance of statistics:<br>
 - <a href="https://www.ics.uci.edu/~welling/publications/papers/WhyMLneedsStatistics.pdf">Welling’s commentary</a><br>
 - <a href="https://www.analyticsvidhya.com/blog/2015/07/difference-machine-learning-statistical-modeling/">Srivastava’s discussion</a><br>
@@ -224,12 +195,8 @@ Chris Kennedy and Pratik Khadse
 <p>Seek “actionable insight”:<br>
 - <a href="https://www.techopedia.com/definition/31721/actionable-insight">Actionable insight</a></p>
 </section>
-<section class="slide level2">
-
-</section></section>
-<section>
-<section id="supervised-machine-learning" class="title-slide slide level1 center">
-<h1>Supervised machine learning</h1>
+<section id="supervised-machine-learning" class="slide level2">
+<h2>Supervised machine learning</h2>
 <p>Selecting a machine learning algorithm depends on the characteristics of the problem being investigated - there is no “best” method applicable to all cases. Machine learning is generally divided into three broad classes of learning: <a href="https://en.wikipedia.org/wiki/Supervised_learning">supervised</a>, <a href="https://en.wikipedia.org/wiki/Unsupervised_learning">unsupervised</a>, and <a href="https://en.wikipedia.org/wiki/Reinforcement_learning">reinforcement</a>.</p>
 <p>We will focus on <strong>supervised learning</strong> and will begin with Ordinary Least Squares (OLS) and Lasso regression, followed by tree-based and ensemble classification methods.</p>
 <p>The syntax for supervised machine learning algorithms can be thought of like this:</p>
@@ -238,53 +205,31 @@ Chris Kennedy and Pratik Khadse
 <span class="math inline">\(x\)</span> are the independent/input/predictor/feature/covariate variables</p>
 <p>Supervised machine learning methods learn a target function <span class="math inline">\(f\)</span> that best maps <span class="math inline">\(x\)</span> to <span class="math inline">\(y\)</span> based on a set of <a href="https://en.wikipedia.org/wiki/Training,_validation,_and_test_sets#Training_dataset">training data</a>.</p>
 </section>
-<section class="slide level2">
-
-</section></section>
-<section>
-<section id="supervised-machine-learning-1" class="title-slide slide level1 center">
-<h1>Supervised machine learning</h1>
+<section id="supervised-machine-learning-1" class="slide level2">
+<h2>Supervised machine learning</h2>
 <p>Our function would look like this: <span class="math inline">\(y = f(x) + \epsilon\)</span> where <span class="math inline">\(f\)</span> is some function that relates our <span class="math inline">\(x\)</span> predictor variables to <span class="math inline">\(y\)</span> in an unknown way thus we must estimate it. Epsilon <span class="math inline">\(\epsilon\)</span> is the random error, is independent of <span class="math inline">\(x\)</span> and averages to zero. Therefore, we can predict <span class="math inline">\(y\)</span> using <span class="math inline">\(\hat{y} = \hat{f}(x)\)</span> for new data (the <a href="https://en.wikipedia.org/wiki/Training,_validation,_and_test_sets#Test_dataset">test dataset</a>) and evaluate how well the algorithm learned the target function when introduced to new data.</p>
 <p><strong>How to define machine learning, specifically? (revisited)</strong><br>
 More specifically, we can think of machine learning as a bunch of methods to estimate <span class="math inline">\(f\)</span>!</p>
 </section>
-<section class="slide level2">
-
-</section></section>
-<section>
-<section id="classification-or-regression" class="title-slide slide level1 center">
-<h1>Classification or regression?</h1>
+<section id="classification-or-regression" class="slide level2">
+<h2>Classification or regression?</h2>
 <p><strong>Classification</strong> is used when the <span class="math inline">\(y\)</span> outcome variable is categorical/discrete. Binary examples generally refer to a yes/no situation where a 1 is prediction of the “yes” category and 0 as the “no”. Classification models the probability that the outcome variable is 1 based on the covariates: <span class="math inline">\(Pr(y = 1 | x)\)</span>. This can be extended to multi-level classification as well.</p>
 <p><strong>Regression</strong> is used when the target <span class="math inline">\(y\)</span> outcome variable is continuous. Regression models the conditional expectation (conditional mean) of the outcome variable given the covariates: <span class="math inline">\(E(y | x)\)</span>.</p>
 </section>
-<section class="slide level2">
-
-</section></section>
-<section>
-<section id="data-preprocessing" class="title-slide slide level1 center">
-<h1>Data preprocessing</h1>
+<section id="data-preprocessing" class="slide level2">
+<h2>Data preprocessing</h2>
 <p>A longstanding first step is to split a dataset into <strong>“training”</strong> and <strong>“test”</strong> subsets. A training sample usually consists of a majority of the original dataset so that an algorithm can learn the model. The remaining portion of the dataset is designated to the test sample to evaluate model performance on data the model has not yet seen. <strong>Clean, subset, and handle missing data if necessary</strong> before the splitting process commences.</p>
 </section>
-<section class="slide level2">
-
-</section></section>
-<section>
-<section id="model-performance" class="title-slide slide level1 center">
-<h1>Model performance</h1>
+<section id="model-performance" class="slide level2">
+<h2>Model performance</h2>
 <p><strong>Performance metrics</strong> are used to see how well a model predicts a specified outcome on training and test datasets.</p>
 <p>A model that performs poorly on the training dataset is <strong>underfit</strong> because it is not able to discern relationships between the <span class="math inline">\(x\)</span> and <span class="math inline">\(y\)</span> variables.</p>
 <p>A model that performs well on the training dataset but poorly on the test dataset is said to be <strong>overfit</strong> because the model performed worse than expected when given new data. To some extent the patterns found in the training data may have been random noise and therefore, by random chance, are different in the test data.</p>
 <p><strong>Common performance metrics</strong>: Accuracy, Mean squared error, Sensitivity and specificity, Area under the ROC curve (AUC)</p>
 </section>
-<section class="slide level2">
-
-</section></section>
-<section>
-<section id="workshop-goals" class="title-slide slide level1 center">
-<h1>Workshop goals</h1>
-
-</section>
-<h3 id="learn-the-basics-of-using-three-supervised-machine-learning-algorithms-in-r">1) Learn the basics of using three supervised machine learning algorithms in R:</h3>
+<section id="workshop-goals" class="slide level2">
+<h2>Workshop goals</h2>
+<h4 id="learn-the-basics-of-using-three-supervised-machine-learning-algorithms-in-r">1) Learn the basics of using three supervised machine learning algorithms in R:</h4>
 <ul>
 <li>Random forest<br>
 </li>
@@ -292,7 +237,7 @@ More specifically, we can think of machine learning as a bunch of methods to est
 </li>
 <li>SuperLearner</li>
 </ul>
-<h3 id="vizualize-important-information">2) Vizualize important information:</h3>
+<h4 id="vizualize-important-information">2) Vizualize important information:</h4>
 <ul>
 <li>Random forest variable importance<br>
 </li>
@@ -300,104 +245,68 @@ More specifically, we can think of machine learning as a bunch of methods to est
 </li>
 <li>SuperLearner cross-validated risk</li>
 </ul>
-<section class="slide level2">
-
-</section></section>
-<section>
-<section id="workshop-goals-1" class="title-slide slide level1 center">
-<h1>Workshop goals</h1>
-
 </section>
-<h3 id="examine-the-performance-of-these-models">3) Examine the performance of these models</h3>
+<section id="workshop-goals-1" class="slide level2">
+<h2>Workshop goals</h2>
+<h4 id="examine-the-performance-of-these-models">3) Examine the performance of these models</h4>
 <ul>
 <li>AUC</li>
 <li>Cross-validated risk</li>
 <li>Calibration</li>
 <li>Net benefit</li>
 </ul>
-<h3 id="simultaneously-compare-multiple-algorithms-in-an-ensemble">4) Simultaneously compare multiple algorithms in an ensemble</h3>
+<h4 id="simultaneously-compare-multiple-algorithms-in-an-ensemble">4) Simultaneously compare multiple algorithms in an ensemble</h4>
 <ul>
 <li>Compare various tunings of multiple algorithms at once</li>
 <li>Weighted ensemble average</li>
 </ul>
-<section class="slide level2">
-
-</section></section>
-<section>
-<section id="data-preprocessing-1" class="title-slide slide level1 center">
-<h1>Data preprocessing</h1>
+</section>
+<section id="data-preprocessing-1" class="slide level2">
+<h2>Data preprocessing</h2>
 <p>A first task will be to prep the data. We don’t have time to focus on this, so we just need to “Preview” the <code>00-clean-dataset.Qmd</code> notebook.</p>
 </section>
-<section class="slide level2">
-
-</section></section>
-<section>
-<section id="decision-trees" class="title-slide slide level1 center">
-<h1>Decision trees</h1>
+<section id="decision-trees" class="slide level2">
+<h2>Decision trees</h2>
 <p>Decision trees are a standard alternative to linear regression and make no assumptions about the data; they split the data into smaller and smaller subgrioups of <span class="math inline">\(x\)</span> covariates in terms of <span class="math inline">\(y\)</span> and split on each predictor. How does it work?</p>
 <p>A decision tree predicts that an observation belongs to its correct class.</p>
 <p>For basic classification, we are no longer using MSE or RMSE but instead classification error rate.</p>
 <p>To determine the top split (“root node”), the model looks at all cutpoints to see which group stands out as the best split. The “complexity parameter” can be used to <a href="https://en.wikipedia.org/wiki/Decision_tree_pruning">prune</a> the tree to a lesser number of splits and removes unnecessary information.</p>
 <p>Breiman et al’s book <a href="https://www.amazon.com/Classification-Regression-Wadsworth-Statistics-Probability/dp/0412048418">Classification and Regression Trees (1984)</a> is a must read for learning more about decision trees.</p>
 </section>
-<section class="slide level2">
-
-</section></section>
-<section>
-<section id="decision-trees-1" class="title-slide slide level1 center">
-<h1>Decision trees</h1>
+<section id="decision-trees-1" class="slide level2">
+<h2>Decision trees</h2>
 <p>.center[<img data-src="slides_img/dt.jpg">]</p>
+<h4 id="open-01-random-forests.qmd-to-work-through-the-decision-tree-examples.">Open “01-random-forests.qmd” to work through the decision tree examples.</h4>
 </section>
-<h3 id="open-01-random-forests.qmd-to-work-through-the-decision-tree-examples.">Open “01-random-forests.qmd” to work through the decision tree examples.</h3>
-<section class="slide level2">
-
-</section></section>
-<section>
-<section id="random-forest" class="title-slide slide level1 center">
-<h1>Random forest</h1>
+<section id="random-forest" class="slide level2">
+<h2>Random forest</h2>
 <p>The random forest algorithm seeks to improve on the performance of a single decision tree by taking the average of many trees. Thus, a random forest can be viewed as an <strong>ensemble</strong> method, or model averaging approach.</p>
 <p>Random forests are - <strong>random</strong> because each tree is a bagged sample <em>and</em> because only a subset of all predictors (the <strong>mtry</strong> hyperparameter) are used as candidates at each split (not all predictors like single decision trees) - This reduced number of predictor candidates at each split allows for something other than the best split to be the top split, thus growing many different looking trees - this “decorrelates” the trees.<br>
 - <strong>forests</strong> because many trees are grown!</p>
 <p>Leo Breiman also wrote the seminal paper on random forests:<br>
 <a href="https://stat.berkeley.edu/~breiman/randomforest2001.pdf">Breiman L. 2001. Random forests. Machine learning 45:5–32</a></p>
 </section>
-<section class="slide level2">
-
-</section></section>
-<section>
-<section id="random-forest-1" class="title-slide slide level1 center">
-<h1>Random forest</h1>
+<section id="random-forest-1" class="slide level2">
+<h2>Random forest</h2>
 <p>.pull-left[ .center[<img data-src="slides_img/pexels-free-forest.png">]]</p>
 <p>.pull-right[ .center[<img data-src="slides_img/med-rf.png">]]</p>
+<h4 id="open-01-random-forest.qmd-to-work-through-the-random-forest-examples.">Open “01-random-forest.qmd” to work through the random forest examples.</h4>
 </section>
-<h3 id="open-01-random-forest.qmd-to-work-through-the-random-forest-examples.">Open “01-random-forest.qmd” to work through the random forest examples.</h3>
-<section class="slide level2">
-
-</section></section>
-<section>
-<section id="xgboost" class="title-slide slide level1 center">
-<h1>XGBoost</h1>
+<section id="xgboost" class="slide level2">
+<h2>XGBoost</h2>
 <p>Boosting takes this ensemble idea a step further! The XGBoost algorithm takes a bunch of weak trees and “boosts” them into strong trees. This algorithm downweights cases it can easily predict but upweights the cases it has trouble predicting.</p>
 <p>This is not teleological though, as boosting fits a forest of trees sequentially on the residual of the previous tree. This learning rate can be specified, or how fast each tree should learn the error of the previous tree. Here we also introduce:<br>
 - <code>caret::trainControl</code> for defining cross-validation (rather than bootstrap) settings<br>
 - <code>caret::expand.grid</code> for creating a grid search of hyperparameters to tune, allowing us to fit multiple combinations of the algoritihm simultaneously. - <em>A</em>rea <em>U</em>nder the Receiver Operating Characteristic <em>C</em>urve (AUC) as a performance metric.</p>
 </section>
-<section class="slide level2">
-
-</section></section>
-<section>
-<section id="xgboost-1" class="title-slide slide level1 center">
-<h1>XGBoost</h1>
+<section id="xgboost-1" class="slide level2">
+<h2>XGBoost</h2>
 <p>.pull-left[ .center[<img data-src="slides_img/xgb-cvhyper.png">]]</p>
 <p>.pull-right[ .center[<img data-src="slides_img/xgb-testAUC.png" alt="Irony">]]</p>
+<h4 id="open-02-boosting.qmd-to-work-through-the-xgboost-examples.">Open “02-boosting.qmd” to work through the xgboost examples.</h4>
 </section>
-<h3 id="open-02-boosting.qmd-to-work-through-the-xgboost-examples.">Open “02-boosting.qmd” to work through the xgboost examples.</h3>
-<section class="slide level2">
-
-</section></section>
-<section>
-<section id="superlearner" class="title-slide slide level1 center">
-<h1>SuperLearner</h1>
+<section id="superlearner" class="slide level2">
+<h2>SuperLearner</h2>
 <p>The SuperLearner R package takes this idea of ensembling even further! Instead of ensembling only trees-based methods, we can simultaneously compare the cross-validated performance of multiple algorithms and/or a single algorithm with differently tuned hyperparameters. This is a generally advisable approach to machine learning instead of fitting single algorithms.</p>
 <p>Let’s compare the algorithms you have previously fitted individually in this workshop: lasso, decision tree, random forest, and xgboost. We will add two other algorithms for fun: logistic regression and the mean of our Y response variable.</p>
 <ul>
@@ -408,21 +317,14 @@ More specifically, we can think of machine learning as a bunch of methods to est
 <li><strong>SL.mean_All:</strong> the mean of our Y response variable; this is the simplest algorithm and should perform the worst of all.</li>
 </ul>
 </section>
-<section class="slide level2">
-
-</section></section>
-<section>
-<section id="superlearner-1" class="title-slide slide level1 center">
-<h1>SuperLearner</h1>
+<section id="superlearner-1" class="slide level2">
+<h2>SuperLearner</h2>
 <p>.pull-left[ .center[<img data-src="slides_img/cvsl-risk.png">]]</p>
 <p>.pull-right[ .center[<img data-src="slides_img/cvsl-auc.png" alt="Irony">]]</p>
-</section>
-<h3 id="open-05-ensembling.qmd-to-work-through-the-superlearner-ensemble-examples.">Open “05-ensembling.qmd” to work through the SuperLearner ensemble examples.</h3>
-<section class="slide level2">
-
+<h4 id="open-05-ensembling.qmd-to-work-through-the-superlearner-ensemble-examples.">Open “05-ensembling.qmd” to work through the SuperLearner ensemble examples.</h4>
 <p>Thanks!</p>
 
-</section></section>
+</section>
     </div>
   <div class="quarto-auto-generated-content" style="display: none;">
 <div class="footer footer-default">
