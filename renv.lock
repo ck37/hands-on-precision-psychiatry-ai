@@ -3316,13 +3316,13 @@
     },
     "h2o": {
       "Package": "h2o",
-      "Version": "3.46.0.7",
+      "Version": "3.44.0.3",
       "Source": "Repository",
       "Type": "Package",
       "Title": "R Interface for the 'H2O' Scalable Machine Learning Platform",
-      "Date": "2025-03-27",
+      "Date": "2023-12-20",
       "Authors@R": "c( person(\"Tomas\", \"Fryda\", role = c(\"aut\", \"cre\"), email = \"tomas.fryda@h2o.ai\"), person(\"Erin\", \"LeDell\", role = c(\"aut\")), person(\"Navdeep\", \"Gill\", role = c(\"aut\")), person(\"Spencer\", \"Aiello\", role = c(\"aut\")), person(\"Anqi\", \"Fu\", role = c(\"aut\")), person(\"Arno\", \"Candel\", role = c(\"aut\")), person(\"Cliff\", \"Click\", role = c(\"aut\")), person(\"Tom\", \"Kraljevic\", role = c(\"aut\")), person(\"Tomas\", \"Nykodym\", role = c(\"aut\")), person(\"Patrick\", \"Aboyoun\", role = c(\"aut\")), person(\"Michal\", \"Kurka\", role = c(\"aut\")), person(\"Michal\", \"Malohlava\", role = c(\"aut\")), person(\"Sebastien\", \"Poirier\", role=c(\"aut\")), person(\"Wendy\", \"Wong\", role = c(\"aut\")), person(\"Ludi\", \"Rehak\", role = c(\"ctb\")), person(\"Eric\", \"Eckstrand\", role = c(\"ctb\")), person(\"Brandon\", \"Hill\", role = c(\"ctb\")), person(\"Sebastian\", \"Vidrio\", role = c(\"ctb\")), person(\"Surekha\", \"Jadhawani\", role = c(\"ctb\")), person(\"Amy\", \"Wang\", role = c(\"ctb\")), person(\"Raymond\", \"Peck\", role = c(\"ctb\")), person(\"Jan\", \"Gorecki\", role = c(\"ctb\")), person(\"Matt\", \"Dowle\", role = c(\"ctb\")), person(\"Yuan\", \"Tang\", role = c(\"ctb\")), person(\"Lauren\", \"DiPerna\", role = c(\"ctb\")), person(\"Veronika\", \"Maurerova\", role=c(\"ctb\")), person(\"Yuliia\", \"Syzon\", role=c(\"ctb\")), person(\"Adam\", \"Valenta\", role=c(\"ctb\")), person(\"Marek\", \"Novotny\", role=c(\"ctb\")), person(\"H2O.ai\", role = c(\"cph\", \"fnd\")) )",
-      "Description": "R interface for 'H2O', the scalable open source machine learning platform that offers parallelized implementations of many supervised and unsupervised machine learning algorithms such as Generalized Linear Models (GLM), Gradient Boosting Machines (including XGBoost), Random Forests, Deep Neural Networks (Deep Learning), Stacked Ensembles, Naive Bayes, Generalized Additive Models (GAM), ANOVA GLM, Cox Proportional Hazards, K-Means, PCA, ModelSelection, Word2Vec, Hierarchical Generalized Linear Models (HGLM), as well as a fully automatic machine learning algorithm (H2O AutoML).",
+      "Description": "R interface for 'H2O', the scalable open source machine learning platform that offers parallelized implementations of many supervised and unsupervised machine learning algorithms such as Generalized Linear Models (GLM), Gradient Boosting Machines (including XGBoost), Random Forests, Deep Neural Networks (Deep Learning), Stacked Ensembles, Naive Bayes, Generalized Additive Models (GAM), ANOVA GLM, Cox Proportional Hazards, K-Means, PCA, ModelSelection, Word2Vec, as well as a fully automatic machine learning algorithm (H2O AutoML).",
       "License": "Apache License (== 2.0)",
       "URL": "https://github.com/h2oai/h2o-3",
       "BugReports": "https://github.com/h2oai/h2o-3/issues",
@@ -3358,11 +3358,12 @@
         "curl",
         "scales"
       ],
-      "RoxygenNote": "7.2.2",
-      "Collate": "'adaboost.R' 'admissibleml.R' 'aggregator.R' 'anovaglm.R' 'astfun.R' 'automl.R' 'classes.R' 'communication.R' 'config.R' 'connection.R' 'constants.R' 'coxph.R' 'coxphutils.R' 'datasets.R' 'decisiontree.R' 'deeplearning.R' 'edicts.R' 'explain.R' 'export.R' 'extendedisolationforest.R' 'frame.R' 'gam.R' 'gbm.R' 'generic.R' 'glm.R' 'glrm.R' 'grid.R' 'hglm.R' 'import.R' 'infogram.R' 'isolationforest.R' 'isotonicregression.R' 'kmeans.R' 'kvstore.R' 'locate.R' 'logging.R' 'models.R' 'modelselection.R' 'naivebayes.R' 'parse.R' 'pca.R' 'permutation_varimp.R' 'pipeline.R' 'predict.R' 'psvm.R' 'randomforest.R' 'rulefit.R' 'segment.R' 'stackedensemble.R' 'svd.R' 'targetencoder.R' 'tf-idf.R' 'upliftrandomforest.R' 'w2vutils.R' 'word2vec.R' 'xgboost.R' 'zzz.R'",
+      "RoxygenNote": "7.1.2",
+      "Collate": "'adaboost.R' 'admissibleml.R' 'aggregator.R' 'anovaglm.R' 'astfun.R' 'automl.R' 'classes.R' 'communication.R' 'config.R' 'connection.R' 'constants.R' 'coxph.R' 'coxphutils.R' 'datasets.R' 'decisiontree.R' 'deeplearning.R' 'edicts.R' 'explain.R' 'export.R' 'extendedisolationforest.R' 'frame.R' 'gam.R' 'gbm.R' 'generic.R' 'glm.R' 'glrm.R' 'grid.R' 'import.R' 'infogram.R' 'isolationforest.R' 'isotonicregression.R' 'kmeans.R' 'kvstore.R' 'locate.R' 'logging.R' 'models.R' 'modelselection.R' 'naivebayes.R' 'parse.R' 'pca.R' 'permutation_varimp.R' 'predict.R' 'psvm.R' 'randomforest.R' 'rulefit.R' 'segment.R' 'stackedensemble.R' 'svd.R' 'targetencoder.R' 'tf-idf.R' 'upliftrandomforest.R' 'w2vutils.R' 'word2vec.R' 'xgboost.R' 'zzz.R'",
       "Author": "Tomas Fryda [aut, cre], Erin LeDell [aut], Navdeep Gill [aut], Spencer Aiello [aut], Anqi Fu [aut], Arno Candel [aut], Cliff Click [aut], Tom Kraljevic [aut], Tomas Nykodym [aut], Patrick Aboyoun [aut], Michal Kurka [aut], Michal Malohlava [aut], Sebastien Poirier [aut], Wendy Wong [aut], Ludi Rehak [ctb], Eric Eckstrand [ctb], Brandon Hill [ctb], Sebastian Vidrio [ctb], Surekha Jadhawani [ctb], Amy Wang [ctb], Raymond Peck [ctb], Jan Gorecki [ctb], Matt Dowle [ctb], Yuan Tang [ctb], Lauren DiPerna [ctb], Veronika Maurerova [ctb], Yuliia Syzon [ctb], Adam Valenta [ctb], Marek Novotny [ctb], H2O.ai [cph, fnd]",
       "Maintainer": "Tomas Fryda <tomas.fryda@h2o.ai>",
-      "Repository": "http://h2o-release.s3.amazonaws.com/h2o/latest_stable_R"
+      "Repository": "CRAN",
+      "Encoding": "UTF-8"
     },
     "hardhat": {
       "Package": "hardhat",
