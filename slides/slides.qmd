@@ -1,14 +1,17 @@
 ---
 title: "Hands-on Machine Learning in R"
 author: "Chris Kennedy and Pratik Khadse"
-date: "Sep. 23, 2025 (updated: `r Sys.Date()`)"
+date: "Sep. 23, 2025"
+execute:
+  echo: true
+  eval: false
 format:
   revealjs:
     theme: default
     slide-number: true
     chalkboard:
       buttons: false
-    preview-links: auto   
+    preview-links: auto
 ---
 
 ```{r setup, include=FALSE, cache=FALSE}
