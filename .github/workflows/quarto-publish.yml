@@ -5,6 +5,7 @@ on:
     paths:
       - 'slides/*.html'
       - 'slides/*_files/**'
+      - 'slides/slides_img/**'
 
 name: Deploy Slides to GitHub Pages
 
