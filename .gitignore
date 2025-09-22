@@ -7,6 +7,9 @@
 
 
 *.png
+# Allow slides images
+!slides/slides_img/*.png
+!slides/slides_img/*.jpg
 *.csv
 *.RData
 *_cache*
