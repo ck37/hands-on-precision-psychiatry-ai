@@ -208,7 +208,7 @@ Breiman et al's book [Classification and Regression Trees (1984)](https://www.am
 
 ## Decision trees
 
-.center[![](slides_img/dt.jpg)]
+![Decision Tree](slides_img/dt.jpg){fig-align="center"}
 
 #### Open "01-random-forests.qmd" to work through the decision tree examples. 
 
@@ -228,13 +228,11 @@ Leo Breiman also wrote the seminal paper on random forests:
 
 ## Random forest 
 
-.pull-left[
-.center[![](slides_img/pexels-free-forest.png)]
-]
+::: {layout-ncol=2}
+![Forest](slides_img/pexels-free-forest.png)
 
-.pull-right[
-.center[![](slides_img/med-rf.png)]
-]
+![Random Forest Medical](slides_img/med-rf.png)
+:::
 
 #### Open "01-random-forest.qmd" to work through the random forest examples.
 
@@ -251,13 +249,11 @@ This is not teleological though, as boosting fits a forest of trees sequentially
 
 ## XGBoost
 
-.pull-left[
-.center[![](slides_img/xgb-cvhyper.png)]
-]
+::: {layout-ncol=2}
+![XGBoost CV Hyperparameters](slides_img/xgb-cvhyper.png)
 
-.pull-right[
-.center[![Irony](slides_img/xgb-testAUC.png)]
-]
+![XGBoost Test AUC](slides_img/xgb-testAUC.png)
+:::
 
 #### Open "02-boosting.qmd" to work through the xgboost examples. 
 
@@ -277,13 +273,11 @@ Let's compare the algorithms you have previously fitted individually in this wor
 
 ## SuperLearner
 
-.pull-left[
-.center[![](slides_img/cvsl-risk.png)]
-]
+::: {layout-ncol=2}
+![SuperLearner CV Risk](slides_img/cvsl-risk.png)
 
-.pull-right[
-.center[![Irony](slides_img/cvsl-auc.png)]
-]
+![SuperLearner AUC](slides_img/cvsl-auc.png)
+:::
 
 #### Open "05-ensembling.qmd" to work through the SuperLearner ensemble examples. 
 
