@@ -264,3 +264,11 @@ If you use ML and evaluate it with net benefit, Chris will give you a virtual go
 
 1. Multiply the test set probability predictions by 2. Does it change the AUC? What about the calibration and net benefit?
 2. See if you can extract the random forest prediction and add to the net benefit plot.
+
+## Reading
+
+Steyberg, E. W. (2009). Clinical prediction models: a practical approach to development, validation, and updating. Springer Science & Business Media.
+
+Vickers, A. J., van Calster, B., & Steyerberg, E. W. (2016). A simple, step-by-step guide to interpreting decision curve analysis. Diagnostic and Prognostic Research, 1(1), 1-10.
+
+Calibration: Van Calster, B., McLernon, D. J., van Smeden, M., Wynants, L., & Steyerberg, E. W. (2019). Calibration: the Achilles heel of predictive analytics. BMC medicine, 17(1), 1-7.
