@@ -33,16 +33,20 @@ This will install the necessary R packages for module 1.
 
 If you run into errors (e.g. installing xgboost), copy the error message, open the Cline extension in Positron, and chat with the LLM to see if you can resolve the issue. Make sure you give it the full error message, what you're doing, and your operating system (Windows or Mac).
 
-### GitHub codespaces
+As a backup option, you can also run this workshop in a GitHub codespace (see below).
 
-To run on codespaces, click the green "Code" button -> then "Codespaces" tab ->
+### GitHub codespaces (backup option)
+
+To run Module 1 using RStudio on GitHub Codespaces, click the green "Code" button -> then "Codespaces" tab ->
 create "codespace on main". Once that starts up, click to the ports tab and
-click the globe.
+click the globe to open a remote RStudio session.
 
 Once logged in to Rstudio (username: rstudio, password: rstudio), click to the
 Terminal tab, cd to your home directory, and create a symlink to the working data
 
 `ln -s /workspaces/hands-on-ai-in-psychiatry .`
+
+Then run the `renv::restore()` command above to install the packages.
 
 ## Books
 
