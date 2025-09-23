@@ -74,4 +74,8 @@ autoplot(auto_fit)
 
 ```
 
+## Readings
+
 See (https://agua.tidymodels.org/articles/auto_ml.html) for a much better tutorial!
+
+[AutoGluon Tabular - Quick Start](https://auto.gluon.ai/stable/tutorials/tabular/tabular-quick-start.html)

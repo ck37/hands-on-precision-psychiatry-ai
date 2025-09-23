@@ -130,8 +130,12 @@ print(cvsl_weights(cv_sl), row.names = FALSE)
 
 2. Can you improve the tuning grid for xgboost?
 
+3. Skim the Guide to SuperLearner vignette linked below. Add a lasso feature selection wrapper to the SuperLearner. Does it improve performance?
+
 ## Further reading
 
-A longer tutorial on SuperLearner is available here: (https://github.com/ck37/superlearner-guide)
+[Guide to SuperLearner](https://cran.r-project.org/web/packages/SuperLearner/vignettes/Guide-to-SuperLearner.html) by Chris Kennedy. (2017).
 
-Kat Hoffman's SuperLearner tutorial
+[Become a Superlearner! An Illustrated Guide to Superlearning](https://www.khstats.com/blog/sl/superlearning) by Kat Hoffman. (2020).
+
+[Stacked generalization: an introduction to super learning](https://link.springer.com/article/10.1007/s10654-018-0390-z). (2018). Naimi, A.I. and Balzer, L.B., European journal of epidemiology, 33(5), pp.459-464.

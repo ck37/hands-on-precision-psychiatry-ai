@@ -107,6 +107,8 @@ sv_importance(shap_viz, kind = "beeswarm", max_display = Inf)  + theme_minimal()
 
 ## Further reading
 
-TreeSHAP nature machine intelligence
+Lundberg, S. M., & Lee, S. I. (2017). A unified approach to interpreting model predictions. In Advances in neural information processing systems (Vol. 30).
 
-Interpretable machine learning book
+Lundberg, S. M. et al. (2020). From local explanations to global understanding with explainable AI for trees. Nature machine intelligence, 2(1), 56-67.
+
+Molnar, Christoph. Interpretable machine learning. https://christophm.github.io/interpretable-ml-book/

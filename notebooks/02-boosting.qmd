@@ -173,4 +173,18 @@ save(model, df_test2, pred_probs,
 
 ## Challenges
 
-Review the help page for `caret::train` and modify a few hyperparameters. Does performance change?
+1. Review the help page for `caret::train` and modify a few hyperparameters. Does performance change?
+
+2. See if you can implement a similar procedure using tidymodels stacking.
+
+3. Try using LightGBM or CatBoost instead of XGBoost - these are similar popular boosting models. Do you get better performance?
+
+## Readings
+
+[Xgboost: A scalable tree boosting system](https://dl.acm.org/doi/abs/10.1145/2939672.2939785). (2016). Chen, T. and Guestrin, C., In Proceedings of the 22nd acm sigkdd international conference on knowledge discovery and data mining (pp. 785-794).
+
+[The caret Package](https://topepo.github.io/caret/) by Max Kuhn. (2019).
+
+[stacks - tidy model stacking](https://stacks.tidymodels.org/articles/basics.html) - a rewrite of caret that is harder to use.
+
+[Optuna: A hyperparameter optimization framework](https://optuna.readthedocs.io/en/stable/index.html) - very good hyperparameter optimizatio framework
