@@ -69,6 +69,18 @@ Cline AI-coding / writing
 
 - Start a mobile app based on ChatGPT and Anthropic responses and come back to it
 
+## Power tools
+
+If you're interested in exploring more agentic AI tools, here are a few more to try out:
+
+- [Claude Code](https://claude.com/product/claude-code) - most popular AI coding (etc) agent
+- [OpenHands](https://docs.all-hands.dev/) - high-quality open source AI coding agent
+- [WisprFlow](https://wisprflow.ai/) - AI-based voice dictation (why type?)
+- [Warp](https://www.warp.dev/) - top terminal-based AI agent
+- [BMAD Method](https://github.com/bmad-code-org/BMAD-METHOD) - framework for planning & building anything
+- [Midjourney](https://www.midjourney.com/) - top AI image and video generator
+- [OpenWebUI](https://openwebui.com/) - self-hosted LLM interface
+
 ## Conclusion
 
 - GitHub CLI + create an issue
