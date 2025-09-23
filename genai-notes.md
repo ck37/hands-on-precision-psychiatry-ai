@@ -10,12 +10,8 @@ What are some clinical challenges in mental health that could be helped with a h
 Rork.com
 - Start a mobile app based on ChatGPT and Anthropic responses and come back to it
 
-Warp - computer control
-
-- Install codename goose
-
 [LM Studio]
-- Install - manually, or using Warp or Goose
+- Install - manually, or using Cline
 - Open weights models - e.g. gemma-3n
 
 Download
@@ -25,9 +21,9 @@ Download
 
 [Put a pin in LM Studio and come back to this.]
 
-Open VS Code
+Open Positron
 
-Orient people to VS Code
+Orient people to Positron
 
 Cline AI-coding / writing
 
@@ -35,7 +31,8 @@ Cline AI-coding / writing
    - Download Deep research doc and put into project folder
    - Check the references
    - Propose possible improvements
-- Return to Goose and install python (minimamba if needed)
+- Use Cline to install python (minimamba if needed)
+
 - Create a random forest machine learning model using scikit-learn and python
 - Use llmlite API to query Anthropic or GPT, or OpenRouter
     - Structured output
@@ -61,9 +58,8 @@ MCP (https://modelcontextprotocol.io/)
    - context7 for documentation search (review https://context7.com/)
    - playright for browser control
 
-User R within VS Code (or just use Positron)
-  - Install extensions: quarto, R, cline
-  - install.packages("languageserver")
+Using R within Positron
+  - Install extensions cline
 
 [return to LM Studio]
 - Load model and set context window
@@ -76,8 +72,4 @@ Films to watch
 - Her
 - The Matrix
 
-Bonus ideas:
-
-Chris make an mcp server for workshop feedback, which posts to the github issue for this repo
-- Everyone make a github account
 
