@@ -52,9 +52,9 @@ theme_set(thm)
 
 ## Download materials
 
-[Click here to download the Introduction to Machine Learning in R workshop materials](https://github.com/ck37/hands-on-precision-psychiatry-ai)
+[Click here to download the workshop materials](https://github.com/ck37/hands-on-precision-psychiatry-ai)
 
-   * Click green "Clone or Download" button
+   * Click green "Code" button
    * Click "Download Zip"
    * Extract this zip file to your Dropbox / Box / etc. and open the folder in Positron (File -> Open Folder)
   
@@ -87,6 +87,7 @@ Run `renv::restore()` to install these.
 Machine learning evolved from scientific pursuits in statistics, computer science, information theory, artificial intelligence, and pattern recognition.  
 
 How to define machine learning?  
+
 1) **Generally:** algorithms, computers, and other machines that can "learn" without direct input from a human programmer.  
 2) **Practically:** sets of tools for investigating/modeling/understanding data.  
 3)  **Specifically:** (see below)
@@ -95,11 +96,13 @@ How to define machine learning?
 ## Brief history of machine learning
 
 The importance of statistics:  
+
 - [Welling's commentary](https://www.ics.uci.edu/~welling/publications/papers/WhyMLneedsStatistics.pdf)  
 - [Srivastava's discussion](https://www.analyticsvidhya.com/blog/2015/07/difference-machine-learning-statistical-modeling/)  
 - [Breiman's take](https://projecteuclid.org/euclid.ss/1009213726)  
 
 Seek "actionable insight":  
+
 - [Actionable insight](https://www.techopedia.com/definition/31721/actionable-insight)  
 
 
@@ -207,8 +210,9 @@ Breiman et al's book [Classification and Regression Trees (1984)](https://www.am
 The random forest algorithm seeks to improve on the performance of a single decision tree by taking the average of many trees. Thus, a random forest can be viewed as an **ensemble** method, or model averaging approach.  
 
 Random forests are 
+
 - **random** because each tree is a bagged sample _and_ because only a subset of all predictors (the **mtry** hyperparameter) are used as candidates at each split (not all predictors like single decision trees)
-  - This reduced number of predictor candidates at each split allows for something other than the best split to be the top split, thus growing many different looking trees - this "decorrelates" the trees.  
+   - This reduced number of predictor candidates at each split allows for something other than the best split to be the top split, thus growing many different looking trees - this "decorrelates" the trees.  
 - **forests** because many trees are grown!
 
 Leo Breiman also wrote the seminal paper on random forests:  
@@ -231,6 +235,7 @@ Leo Breiman also wrote the seminal paper on random forests:
 Boosting takes this ensemble idea a step further! The XGBoost algorithm takes a bunch of weak trees and "boosts" them into strong trees. This algorithm downweights cases it can easily predict but upweights the cases it has trouble predicting. 
 
 This is not teleological though, as boosting fits a forest of trees sequentially on the residual of the previous tree. This learning rate can be specified, or how fast each tree should learn the error of the previous tree. Here we also introduce:  
+
 - `caret::trainControl` for defining cross-validation (rather than bootstrap) settings  
 - `caret::expand.grid` for creating a grid search of hyperparameters to tune, allowing us to fit multiple combinations of the algoritihm simultaneously. 
 - *A*rea *U*nder the Receiver Operating Characteristic *C*urve (AUC) as a performance metric.  
