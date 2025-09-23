@@ -59,3 +59,7 @@ Make an account on <https://claude.ai> if you don't already have one, and consid
 
 -   If you're on MacOS, install [Homebrew](https://brew.sh/).
 -   If you're on Windows, install [WinGet](https://learn.microsoft.com/en-us/windows/package-manager/winget/#install-winget) or [Chocolatey](https://chocolatey.org/install).
+
+### Java JDK
+
+To run the h2o ensembling demo you will need java to work correctly from within R. [This page shows how to setup java correctly](https://www.geeksforgeeks.org/java/setting-environment-java/) on both Mac and Windows.
