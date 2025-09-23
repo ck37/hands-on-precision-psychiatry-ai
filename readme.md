@@ -17,15 +17,21 @@
   * Active calibration: isotonic, beta, GAM - probably out of time.
   *	Coding challenge / questions / break / troubleshooting (30 minutes)
 
+**Module 2**: Generative AI for science
+
+**Module 3**: Deep learning undering of psychiatric patients
+
 ## Software setup
 
-Download the repository, open it in RStudio as a project, then run:
+First, go through the major installation items in [setup.md](setup.md).
+
+Then download the repository, open it in Positron as a folder (or RStudio), then run:
 
 ```{r renv_setup}
 renv::restore()
 ```
 
-This will install the necessary R packages.
+This will install the necessary R packages for module 1.
 
 ### GitHub codespaces
 
