@@ -9,7 +9,6 @@ format:
     toc_float: yes
 ---
 
-
 ```{r load_data}
 # Created in clean-dataset.Rmd
 load(here::here("data/clean-dataset.RData"))
@@ -22,6 +21,14 @@ library(agua)
 
 ```
 
+::: callout-note
+## Note
+
+h2o requires Java JDK to be installed on your system and configured, which is kind of a whole thing. Give this code a try and if it works awesome, and if not it's ok to just get the overall concept.
+
+If you do want to install Java JDK, [this page will walk you through Windows or Mac installs](https://www.geeksforgeeks.org/java/setting-environment-java/) as one option.
+:::
+
 ## Start h2o
 
 ```{r start_h2o}
@@ -30,6 +37,7 @@ library(agua)
 # On a shared server, may need to change default port, and set username and password.
 h2o.init(nthreads = 1L, strict_version_check = FALSE)
 ```
+
 ## Auto ML
 
 ```{r auto_ml}
