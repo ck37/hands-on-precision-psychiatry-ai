@@ -59,3 +59,11 @@ And remember that you can use Cline, Claude Code, or other LLMs to do most of th
 [Hands-On Generative AI with Transformers and Diffusion Models](https://www.oreilly.com/library/view/hands-on-generative-ai/9781098149239/) by Omar Sanseviero et al. (2024). O'Reilly.
 
 Note: beware of AI-related books by Packt Publishing, as they are often of low quality. Publishers like CRC, O'Reilly, and Manning maintain important quality standards.
+
+### Articles
+
+Liu, Y., Chen, P. H. C., Krause, J., & Peng, L. (2019). [How to read articles that use machine learning: users’ guides to the medical literature](https://jamanetwork.com/journals/jama/article-abstract/2754798). Jama, 322(18), 1806-1816.
+
+Ning, Y. et al. (2024). [Generative artificial intelligence and ethical considerations in health care: a scoping review and ethics checklist](https://www.thelancet.com/journals/landig/article/PIIS2589-7500(24)00143-2/fulltext). The Lancet Digital Health, 6(11), e848-e856. [See GitHub repo](https://github.com/nliulab/GenAI-Ethics-Checklist)
+
+Schlagwein, D., & Willcocks, L. (2023). [‘ChatGPT et al.’: The ethics of using (generative) artificial intelligence in research and science](https://journals.sagepub.com/doi/full/10.1177/02683962231200411). Journal of Information Technology, 38(3), 232-238.
