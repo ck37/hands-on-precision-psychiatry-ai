@@ -1,7 +1,7 @@
 ---
 title: "Hands-on Machine Learning in R"
 author: "Chris Kennedy and Pratik Khadse"
-date: "Sep. 23, 2025"
+date: "September 23, 2025"
 execute:
   echo: true
   eval: false
@@ -9,6 +9,8 @@ format:
   revealjs:
     theme: default
     slide-number: true
+    smaller: true
+    scrollable: true
     chalkboard:
       buttons: false
     preview-links: auto
@@ -41,39 +43,26 @@ thm <- theme_bw() +
 theme_set(thm)
 ```
 
-<a href="https://github.com/ck37/hands-on-precision-psychiatry-ai"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png" alt="Fork me on GitHub"></a>
-
-<br><br><br><br>
-
-#### Chris Kennedy and Pratik Khadse
-#### Sep. 23, 2025
-
-
 ## "It’s tough to make predictions, especially about the future." -Yogi Berra
-
-
-## Resources
-_An Introduction to Statistical Learning - with Applications in R (2013)_ by Gareth James, Daniela Witten, Trevor Hastie, Robert Tibshirani. Springer: New York. [Amazon](https://www.amazon.com/Introduction-Statistical-Learning-Applications-Statistics/dp/1461471370) or [free PDF](http://www-bcf.usc.edu/~gareth/ISL/). We encourage you to support the authors by purchasing their textbook!  
-
-[Also check out the many resources](https://github.com/dlab-berkeley/MachineLearningWG) outlined in D-Lab's Machine Learning Working Group repository. 
 
 
 ## Software requirements
 
 [See setup.md](https://github.com/ck37/hands-on-precision-psychiatry-ai/blob/main/setup.md)
 
-
 ## Download materials
 
 [Click here to download the Introduction to Machine Learning in R workshop materials](https://github.com/ck37/hands-on-precision-psychiatry-ai)
-  * Click green “Clone or Download” button
-  * Click “Download Zip”
-  * Extract this zip file to your Dropbox / Box / etc. and open the folder in Postron (File -> Open Folder)
+
+   * Click green "Clone or Download" button
+   * Click "Download Zip"
+   * Extract this zip file to your Dropbox / Box / etc. and open the folder in Positron (File -> Open Folder)
   
 Or (advanced):
-  * Copy the github clone URL (https or ideally the ssh version)
-  * Run `git clone [URL]` in the Terminal in the folder you want it to live in.
-  * In Positron select File -> Open Folder
+
+   * Copy the github clone URL (https or ideally the ssh version)
+   * Run `git clone [URL]` in the Terminal in the folder you want it to live in.
+   * In Positron select File -> Open Folder
 
 
 ## Install required R packages 
@@ -195,7 +184,7 @@ A first task will be to prep the data. We don't have time to focus on this, so w
 
 ## Decision trees
 
-Decision trees are a standard alternative to linear regression and make no assumptions about the data; they split the data into smaller and smaller subgrioups of $x$ covariates in terms of $y$ and split on each predictor. How does it work? 
+Decision trees are a standard alternative to linear regression and make no assumptions about the data; they split the data into smaller and smaller subgroups of $x$ covariates in terms of $y$ and split on each predictor. How does it work?
 
 A decision tree predicts that an observation belongs to its correct class. 
 

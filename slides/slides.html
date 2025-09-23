@@ -48,6 +48,7 @@
     }
     .reveal .slide:not(.center) {
       height: 100%;
+      overflow-y: auto;
     }
     .reveal .slide.scrollable {
       overflow-y: auto;
@@ -142,20 +143,8 @@ Chris Kennedy and Pratik Khadse
 
   <p class="date">2025-09-23</p>
 </section>
-<section class="slide level2">
-
-<p><a href="https://github.com/ck37/hands-on-precision-psychiatry-ai"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png" alt="Fork me on GitHub"></a></p>
-<p><br><br><br><br></p>
-<h4 id="chris-kennedy-and-pratik-khadse">Chris Kennedy and Pratik Khadse</h4>
-<h4 id="sep.-23-2025">Sep.&nbsp;23, 2025</h4>
-</section>
 <section id="its-tough-to-make-predictions-especially-about-the-future.--yogi-berra" class="slide level2">
 <h2>“It’s tough to make predictions, especially about the future.” -Yogi Berra</h2>
-</section>
-<section id="resources" class="slide level2">
-<h2>Resources</h2>
-<p><em>An Introduction to Statistical Learning - with Applications in R (2013)</em> by Gareth James, Daniela Witten, Trevor Hastie, Robert Tibshirani. Springer: New York. <a href="https://www.amazon.com/Introduction-Statistical-Learning-Applications-Statistics/dp/1461471370">Amazon</a> or <a href="http://www-bcf.usc.edu/~gareth/ISL/">free PDF</a>. We encourage you to support the authors by purchasing their textbook!</p>
-<p><a href="https://github.com/dlab-berkeley/MachineLearningWG">Also check out the many resources</a> outlined in D-Lab’s Machine Learning Working Group repository.</p>
 </section>
 <section id="software-requirements" class="slide level2">
 <h2>Software requirements</h2>
@@ -163,8 +152,18 @@ Chris Kennedy and Pratik Khadse
 </section>
 <section id="download-materials" class="slide level2">
 <h2>Download materials</h2>
-<p><a href="https://github.com/ck37/hands-on-precision-psychiatry-ai">Click here to download the Introduction to Machine Learning in R workshop materials</a> * Click green “Clone or Download” button * Click “Download Zip” * Extract this zip file to your Dropbox / Box / etc. and open the folder in Postron (File -&gt; Open Folder)</p>
-<p>Or (advanced): * Copy the github clone URL (https or ideally the ssh version) * Run <code>git clone [URL]</code> in the Terminal in the folder you want it to live in. * In Positron select File -&gt; Open Folder</p>
+<p><a href="https://github.com/ck37/hands-on-precision-psychiatry-ai">Click here to download the Introduction to Machine Learning in R workshop materials</a></p>
+<ul>
+<li>Click green “Clone or Download” button</li>
+<li>Click “Download Zip”</li>
+<li>Extract this zip file to your Dropbox / Box / etc. and open the folder in Positron (File -&gt; Open Folder)</li>
+</ul>
+<p>Or (advanced):</p>
+<ul>
+<li>Copy the github clone URL (https or ideally the ssh version)</li>
+<li>Run <code>git clone [URL]</code> in the Terminal in the folder you want it to live in.</li>
+<li>In Positron select File -&gt; Open Folder</li>
+</ul>
 </section>
 <section id="install-required-r-packages" class="slide level2">
 <h2>Install required R packages</h2>
@@ -267,7 +266,7 @@ More specifically, we can think of machine learning as a bunch of methods to est
 </section>
 <section id="decision-trees" class="slide level2">
 <h2>Decision trees</h2>
-<p>Decision trees are a standard alternative to linear regression and make no assumptions about the data; they split the data into smaller and smaller subgrioups of <span class="math inline">\(x\)</span> covariates in terms of <span class="math inline">\(y\)</span> and split on each predictor. How does it work?</p>
+<p>Decision trees are a standard alternative to linear regression and make no assumptions about the data; they split the data into smaller and smaller subgroups of <span class="math inline">\(x\)</span> covariates in terms of <span class="math inline">\(y\)</span> and split on each predictor. How does it work?</p>
 <p>A decision tree predicts that an observation belongs to its correct class.</p>
 <p>For basic classification, we are no longer using MSE or RMSE but instead classification error rate.</p>
 <p>To determine the top split (“root node”), the model looks at all cutpoints to see which group stands out as the best split. The “complexity parameter” can be used to <a href="https://en.wikipedia.org/wiki/Decision_tree_pruning">prune</a> the tree to a lesser number of splits and removes unnecessary information.</p>
@@ -417,7 +416,7 @@ More specifically, we can think of machine learning as a bunch of methods to est
 'jumpToSlide': true,
 'menu': {"side":"left","useTextContentForMissingTitles":true,"markers":false,"loadIcons":false,"custom":[{"title":"Tools","icon":"<i class=\"fas fa-gear\"></i>","content":"<ul class=\"slide-menu-items\">\n<li class=\"slide-tool-item active\" data-item=\"0\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.fullscreen(event)\"><kbd>f</kbd> Fullscreen</a></li>\n<li class=\"slide-tool-item\" data-item=\"1\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.speakerMode(event)\"><kbd>s</kbd> Speaker View</a></li>\n<li class=\"slide-tool-item\" data-item=\"2\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\"><kbd>o</kbd> Slide Overview</a></li>\n<li class=\"slide-tool-item\" data-item=\"3\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.togglePdfExport(event)\"><kbd>e</kbd> PDF Export Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"4\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleScrollView(event)\"><kbd>r</kbd> Scroll View Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"5\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleChalkboard(event)\"><kbd>b</kbd> Toggle Chalkboard</a></li>\n<li class=\"slide-tool-item\" data-item=\"6\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleNotesCanvas(event)\"><kbd>c</kbd> Toggle Notes Canvas</a></li>\n<li class=\"slide-tool-item\" data-item=\"7\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.downloadDrawings(event)\"><kbd>d</kbd> Download Drawings</a></li>\n<li class=\"slide-tool-item\" data-item=\"8\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.keyboardHelp(event)\"><kbd>?</kbd> Keyboard Help</a></li>\n</ul>"}],"openButton":true},
 'chalkboard': {"buttons":false},
-'smaller': false,
+'smaller': true,
  
         // Display controls in the bottom right corner
         controls: false,

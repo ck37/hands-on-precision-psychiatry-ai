@@ -25,7 +25,7 @@ preview:
 .PHONY: deploy
 deploy: slides
 	@echo "Deploying slides to GitHub Pages..."
-	git add slides/slides.html slides/slides_files
+	git add slides/slides.html slides/slides_files slides/slides_img
 	git commit -m "Update rendered slides" || echo "No changes to commit"
 	git push
 
