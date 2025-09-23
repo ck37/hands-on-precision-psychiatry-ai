@@ -10,14 +10,14 @@
   *	Performance evaluation (discrimination, calibration, net benefit)
   *	Interpretability (SHAP global and local variable importance, ALE plots)
   *	Averaging multiple prediction algorithms (ensembling)
-  *	Choosing algorithm settings (hyperparameter optimization - ideally model-based) 
+  *	Choosing algorithm settings (hyperparameter optimization)
   *	Automated machine learning (tidymodels + h2o)
   * Active calibration: logistic, isotonic, beta, GAM - [see tidymodels tutorial](https://www.tidymodels.org/learn/models/calibration/).
   *	Coding challenge / questions / break / troubleshooting (30 minutes)
 
-**Module 2**: Generative AI for science
+**Module 2**: Generative AI
 
-**Module 3**: Complex understanding of psychiatric patients
+See [genai-outline.md](genai-outline.md).
 
 ## Software setup
 
