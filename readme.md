@@ -35,7 +35,7 @@ If you run into errors (e.g. installing xgboost), copy the error message, open t
 
 As a backup option, you can also run this workshop in a GitHub codespace (see below).
 
-### GitHub codespaces (backup option)
+### GitHub codespaces (backup option for module 1)
 
 To run Module 1 using RStudio on GitHub Codespaces, click the green "Code" button -> then "Codespaces" tab ->
 create "codespace on main". Once that starts up, click to the ports tab and
