@@ -74,8 +74,18 @@ autoplot(auto_fit)
 
 ```
 
+## Challenges
+
+1. Skim the documentation for `auto_ml()` and see what other options you might want to set.
+
+2. Check out the first two readings below and try more advanced options.
+
+3. Try out AutoGluon using python - you can use Cline to help write it if desired.
+
 ## Readings
 
 See (https://agua.tidymodels.org/articles/auto_ml.html) for a much better tutorial!
+
+[H2O AutoML: Automatic Machine Learning](https://docs.h2o.ai/h2o/latest-stable/h2o-docs/automl.html)
 
 [AutoGluon Tabular - Quick Start](https://auto.gluon.ai/stable/tutorials/tabular/tabular-quick-start.html)
