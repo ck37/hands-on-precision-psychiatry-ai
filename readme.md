@@ -2,8 +2,6 @@
 
 ## Content outline
 
-**Module 0**: Background / intro to AI and ML
-
 **Module 1**: Supervised machine learning
 
   *	Highest value machine learning algorithms
@@ -19,7 +17,7 @@
 
 **Module 2**: Generative AI for science
 
-**Module 3**: Deep learning undering of psychiatric patients
+**Module 3**: Complex understanding of psychiatric patients
 
 ## Software setup
 
@@ -32,6 +30,8 @@ renv::restore()
 ```
 
 This will install the necessary R packages for module 1.
+
+If you run into errors (e.g. installing xgboost), copy the error message, open the Cline extension in Positron, and chat with the LLM to see if you can resolve the issue. Make sure you give it the full error message, what you're doing, and your operating system (Windows or Mac).
 
 ### GitHub codespaces
 
