@@ -12,7 +12,7 @@
   *	Averaging multiple prediction algorithms (ensembling)
   *	Choosing algorithm settings (hyperparameter optimization - ideally model-based) 
   *	Automated machine learning (tidymodels + h2o)
-  * Active calibration: isotonic, beta, GAM - probably out of time.
+  * Active calibration: logistic, isotonic, beta, GAM - [see tidymodels tutorial](https://www.tidymodels.org/learn/models/calibration/).
   *	Coding challenge / questions / break / troubleshooting (30 minutes)
 
 **Module 2**: Generative AI for science
@@ -46,14 +46,16 @@ Terminal tab, cd to your home directory, and create a symlink to the working dat
 
 ## Books
 
-These books provide a thorough foundation for the material we briefly touch on in this workshop. Feel free to pick and choose the chapters that interest you the most - you don't need to read every chapter. And remember that you can use Cline, Claude Code, or other LLMs to do most of the coding and minimize the struggle (but if really want to understand what's going on, you'll want to write some of the code).
+These books provide a thorough foundation for the material we briefly touch on in this workshop. Feel free to pick and choose the chapters that interest you the most - you don't need to read every chapter.
 
-[Hands-On Machine Learning with R](https://bradleyboehmke.github.io/HOML/) by Brad Boehmke and Brandon Greenwell (CRC Press, 2020)
+And remember that you can use Cline, Claude Code, or other LLMs to do most of the coding and minimize the struggle. (But if really want to understand what's going on, you'll want to write some of the code - that can come later though).
 
-[Deep Learning with Python, 3rd Edition](https://www.manning.com/books/deep-learning-with-python-third-edition) by François Chollet (Manning, 2025)
+[Hands-On Machine Learning with R](https://bradleyboehmke.github.io/HOML/) by Brad Boehmke and Brandon Greenwell. (2020). CRC Press.
 
-[Hands-on Large Language Models: Language Understanding and Generation](https://www.oreilly.com/library/view/hands-on-large-language/9781098150952/) by Jay Alammar and Maarten Grootendorst, O'Reilly, 2024
+[Deep Learning with Python, 3rd Edition](https://www.manning.com/books/deep-learning-with-python-third-edition) by François Chollet (2025). Manning.
 
-[Hands-On Generative AI with Transformers and Diffusion Models](https://www.oreilly.com/library/view/hands-on-generative-ai/9781098149239/) by Omar Sanseviero et al., O'Reilly, 2024
+[Hands-on Large Language Models: Language Understanding and Generation](https://www.oreilly.com/library/view/hands-on-large-language/9781098150952/) by Jay Alammar and Maarten Grootendorst. (2024). O'Reilly.
+
+[Hands-On Generative AI with Transformers and Diffusion Models](https://www.oreilly.com/library/view/hands-on-generative-ai/9781098149239/) by Omar Sanseviero et al. (2024). O'Reilly.
 
 Note: beware of AI-related books by Packt Publishing, as they are often of low quality. Publishers like CRC, O'Reilly, and Manning maintain important quality standards.
