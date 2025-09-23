@@ -52,7 +52,7 @@ And remember that you can use Cline, Claude Code, or other LLMs to do most of th
 
 [Hands-On Machine Learning with R](https://bradleyboehmke.github.io/HOML/) by Brad Boehmke and Brandon Greenwell. (2020). CRC Press.
 
-[Deep Learning with Python, 3rd Edition](https://www.manning.com/books/deep-learning-with-python-third-edition) by François Chollet (2025). Manning.
+[Deep Learning with Python, 3rd Edition](https://www.manning.com/books/deep-learning-with-python-third-edition) by François Chollet. (2025). Manning.
 
 [Hands-on Large Language Models: Language Understanding and Generation](https://www.oreilly.com/library/view/hands-on-large-language/9781098150952/) by Jay Alammar and Maarten Grootendorst. (2024). O'Reilly.
 
