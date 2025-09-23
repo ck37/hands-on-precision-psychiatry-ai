@@ -40,8 +40,7 @@ For a more powerful data science setup, [download miniforge](https://conda-forge
   - On MacOS: open your Terminal (Applications -> Utilities -> Terminal)
     - Move into your Downloads folder: `cd Downloads`
     - Run the installer: `bash Miniforge3-$(uname)-$(uname -m).sh`
-
-Near the end of the installation, it will give you the option of choosing to automatically initialize conda in your Terminal. Select this option so that conda is in your path and Positron will see its version of python as an Interpreter option. [More details here on how Positron finds python installs](https://positron.posit.co/python-installations.html).
+  - Near the end of the miniforge installation, it will give you the option of choosing to automatically initialize conda in your Terminal. Select this option so that conda is in your path and Positron will see its version of python as an Interpreter option. [More details here on how Positron finds python installs](https://positron.posit.co/python-installations.html).
 
 ## Optional
 
