@@ -1,6 +1,6 @@
 These are brief setup steps for the workshop.
 
-If you're able to get Positron and Cline working correctly, you can use Cline to debug other errors you experience or just do the installation for you (e.g. tell Cline: "install lm studio").
+If you're able to get Positron and Cline working correctly in the first section, you can use Cline to debug other errors you experience or just do the installation for you (e.g. tell Cline: "install lm studio").
 
 For those interested, we will also go through the steps together this Friday (Sep. 19) at either noon or 1pm EDT.
 
@@ -9,7 +9,7 @@ For those interested, we will also go through the steps together this Friday (Se
 [Download and install Positron](https://positron.posit.co/install.html)
 
 -   <img src="images/positron-extensions.png" width="40"/> Open up Positron, click the Extensions tab on the left, search for "Cline", and install the Cline extension created by the Cline organization's "saoudrizwan" developer (1M+ downloads)
--   <img src="images/positron-cline.png" width="40"/> Click the new Cline tile on the left, click "get started for free", make a free account with Cline, and select the free "grok-code-fast-1" model.
+-   <img src="images/positron-cline.png" width="40"/> Click the new Cline tile on the left, click "get started for free", make a free account with Cline, and select the free `grok-code-fast-1` model or the `code-supernova model`.
 
 To learn more, try this [Positron Youtube demo by Julia Silge](https://www.youtube.com/watch?v=aKSrptGegeo), or [review these docs](https://positron.posit.co/features.html).
 
@@ -22,16 +22,20 @@ To learn more, try this [Positron Youtube demo by Julia Silge](https://www.youtu
 
 ## LM Studio
 
-Download and install [LM Studio](https://lmstudio.ai/)
+Download and install [LM Studio](https://lmstudio.ai/) for running smaller LLMs on your own computer.
 
--   Once installed, select "power user" or "developer" mode, click the Discover button on the left, and see if you can download these models:
-    -   Gemma 3n E4B
-    -   Qwen3 4B Thinking 2507
+-   Once installed, select "power user" or "developer" mode, click the Discover button on the left, and see if you can download one or both of these models:
+    -   Gemma 3n E4B - small, fast, general usage model
+    -   Qwen3 4B Thinking 2507 - small, shows thinking ability
 -   Note: if on an Intel-CPU based Mac, [use Msty instead](https://msty.app), which is similar.
+
+The specific versions and models are not important here. Our goal is to demonstrate the process of using an LLM on your own computer rather than via an online service like ChatGPT.
 
 ## Python
 
-If you don't already use python for data science, download [miniforge](https://conda-forge.org/download/). On MacOS you'll need to select the correct version for your CPU, as in the R step above.
+If you don't already use python for data science, [follow these instructions to install python and add to your PATH](https://code.visualstudio.com/docs/python/python-tutorial#_prerequisites).
+
+For a more powerful data science setup, [download miniforge](https://conda-forge.org/download/). On MacOS you'll need to select the correct version for your CPU, as in the R step above.
 
   - On MacOS: open your Terminal (Applications -> Utilities -> Terminal)
     - Move into your Downloads folder: `cd Downloads`
@@ -51,7 +55,7 @@ Make a free account on <https://github.com> if you don't already have one, and l
 
 ### OpenRouter
 
-Make a free account on <https://openrouter.ai> if you don't already have one, and login.
+Make a free account on <https://openrouter.ai> if you don't already have one, and login. This will give you access to many free online LLMs and the ability to use almost any paid LLM.
 
 ### Anthropic
 
@@ -65,3 +69,7 @@ Make an account on <https://claude.ai> if you don't already have one, and consid
 ### Java JDK
 
 To run the h2o ensembling demo you will need java to work correctly from within R. [This page shows how to setup java correctly](https://www.geeksforgeeks.org/java/setting-environment-java/) on both Mac and Windows.
+
+### Ollama
+
+[Install ollama](https://ollama.com/download) and [create a free cloud account](https://ollama.com/cloud). This is a helpful way to run local LLMs for progammatic usage (e.g. via R or Python notebooks).
