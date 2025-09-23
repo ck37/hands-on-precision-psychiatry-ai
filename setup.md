@@ -37,7 +37,7 @@ If you don't already use python for data science, download [miniforge](https://c
     - Move into your Downloads folder: `cd Downloads`
     - Run the installer: `bash Miniforge3-$(uname)-$(uname -m).sh`
 
-Near the install of the installation, it will give you the option of choosing to automatically initialize conda in your Terminal. Select this option so that conda is in your path and Positron will see its version of python as an Interpreter option.
+Near the end of the installation, it will give you the option of choosing to automatically initialize conda in your Terminal. Select this option so that conda is in your path and Positron will see its version of python as an Interpreter option. [More details here on how Positron finds python installs](https://positron.posit.co/python-installations.html).
 
 ## Optional
 
